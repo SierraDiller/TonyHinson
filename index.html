@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tony Hinson - Powerlifting Coach Extraordinaire</title>
+    <title>Tony Hinson - Powerlifting Coach</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         html {
@@ -35,6 +35,16 @@
             font-size: 1.05rem;
             max-width: 90%;
         }
+
+        header.hero {
+            text-align: center;
+            margin-top: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        h1.hero-name {
+            text-shadow: 2px 3px 6px rgba(0, 0, 0, .25);
+        }
     </style>
 </head>
 
@@ -48,27 +58,13 @@
         </nav>
     </header>
 
-    <main
-        class="flex flex-col items-center text-center pt-16 pb-4 w-full bg-gradient-to-b from-[#222] via-[#111] to-black">
-        <h1 class="text-5xl md:text-6xl font-bold italic text-black"
-            style="font-family: 'Arial Black', Arial, sans-serif;">
-            Tony Hinson
-        </h1>
-        <h2 class="text-2xl md:text-3xl font-extrabold mt-4 mb-2"
-            style="color: #A94442; font-family: 'Segoe UI', Arial, sans-serif;">
-            From World Athlete to Coaching Athletes
-        </h2>
-    </main>
-
-    <div class="flex justify-center pb-8 bg-gradient-to-b from-[#222] via-[#111] to-black">
-        <video controls autoplay muted playsinline
-            class="w-full max-w-xl rounded-xl shadow-lg border-t-4 border-[#A94442]">
-            <source src="intro.mov.mov" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+    <div class="flex justify-center items-center w-full bg-black pt-6 pb-2">
+        <img src="Tony/TONY HINSON.png" alt="Tony Hinson" class="max-w-full h-auto shadow-lg" />
     </div>
+    <!-- Removed video from here -->
 
-    <section id="about" class="w-full px-0 py-20 bg-black">
+
+    <section id="about" class="w-full px-0 py-16 bg-black">
         <div class="flex flex-col-reverse md:flex-row items-center gap-12 w-full max-w-6xl mx-auto px-6">
             <div class="w-full md:w-1/2 text-left">
                 <h2 class="text-xl font-bold text-white mb-4 tracking-wide uppercase">Meet Tony</h2>
@@ -87,48 +83,51 @@
                 </p>
             </div>
             <div class="w-full md:w-1/2 flex justify-center">
-                <img src="519462609_1388832122423572_2025052686279750097_n.jpg" alt="Coach Tony"
-                    class="rounded-2xl object-cover max-w-sm w-full h-auto shadow-md"
-                    style="box-shadow: 0 0 20px rgba(255,255,255,0.1);" />
+                <!-- Video moved here in place of the photo -->
+                <video autoplay muted loop playsinline
+                    class="w-full max-w-xl rounded-xl shadow-lg border-t-4 border-black">
+                    <source src="Tony/intro.mov.mov" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
             </div>
         </div>
-        <div class="w-full h-16 bg-gradient-to-b from-black to-[#111]"></div>
+        <div class="w-full h-6 bg-gradient-to-b from-black to-[#111]"></div>
     </section>
 
-    <section class="w-full py-20" style="background-color: #1F2937;">
+    <section class="w-full py-12" style="background-color: #000000;">
         <div class="max-w-6xl mx-auto px-6">
             <div class="flex flex-wrap justify-center gap-10">
-                <div
-                    class="flex flex-col items-center text-center shadow-md border border-gray-200 rounded-xl max-w-lg w-full bg-gray-100">
-                    <img src="athlete1.jpg" alt="Elite Background"
+                <div class="flex flex-col items-center text-center shadow-md rounded-xl max-w-lg w-full bg-black">
+                    <img src="Tony/athlete1.jpg" alt="Elite Background"
                         class="w-full h-80 md:h-[400px] object-cover rounded-t-xl" />
                     <div class="flex flex-col items-center px-6 py-8">
-                        <h3 class="font-extrabold text-xl mt-4 uppercase" style="color: #A94442;">Coaching approach.
+                        <h3 class="font-extrabold text-xl mt-4 uppercase text-white" style="color: #A94442;">Coaching
+                            approach.
                         </h3>
-                        <p class="text-gray-400 text-base mt-4 leading-tight px-4">
+                        <p class="text-white text-base mt-4 leading-tight px-4">
                             Guided training backed by years of global competition experience.
                         </p>
                     </div>
                 </div>
-                <div
-                    class="flex flex-col items-center text-center shadow-md border border-gray-200 rounded-xl max-w-lg w-full bg-gray-100">
-                    <img src="518792983_625257063925986_5491211602980554466_n.jpg" alt="Personal Approach"
+                <div class="flex flex-col items-center text-center shadow-md rounded-xl max-w-lg w-full bg-black">
+                    <img src="Tony/518792983_625257063925986_5491211602980554466_n.jpg" alt="Personal Approach"
                         class="w-full h-80 md:h-[400px] object-cover rounded-t-xl" />
                     <div class="flex flex-col items-center px-6 py-8">
-                        <h3 class="font-extrabold text-xl mt-4 uppercase" style="color: #A94442;">Personal approach.
+                        <h3 class="font-extrabold text-xl mt-4 uppercase text-white" style="color: #A94442;">Personal
+                            approach.
                         </h3>
-                        <p class="text-gray-400 text-base mt-4 leading-tight px-4">
+                        <p class="text-white text-base mt-4 leading-tight px-4">
                             Plans tailored for you —no matter your age, level, or personal record.
                         </p>
                     </div>
                 </div>
-                <div
-                    class="flex flex-col items-center text-center shadow-md border border-gray-200 rounded-xl max-w-lg w-full bg-gray-100">
-                    <img src="519610342_1108605020847198_3918510069182491452_n.jpg" alt="Paced Progress"
+                <div class="flex flex-col items-center text-center shadow-md rounded-xl max-w-lg w-full bg-black">
+                    <img src="Tony/519610342_1108605020847198_3918510069182491452_n.jpg" alt="Paced Progress"
                         class="w-full h-80 md:h-[400px] object-cover rounded-t-xl" />
                     <div class="flex flex-col items-center px-6 py-8">
-                        <h3 class="font-extrabold text-xl mt-4 uppercase" style="color: #A94442;">Paced progress.</h3>
-                        <p class="text-gray-400 text-base mt-4 leading-tight px-4">
+                        <h3 class="font-extrabold text-xl mt-4 uppercase text-white" style="color: #A94442;">Paced
+                            progress.</h3>
+                        <p class="text-white text-base mt-4 leading-tight px-4">
                             We keep it motivating, challenging, and most of all—fun.
                         </p>
                     </div>
@@ -137,10 +136,13 @@
         </div>
     </section>
 
+
+
     <!-- Testimonials Section -->
-    <section id="testimonials" class="w-full pt-20 pb-8 bg-white">
+    <section id="testimonials" class="w-full pt-5 pb-8 bg-black">
         <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-3xl font-bold mb-8 text-[#A94442] tracking-wide uppercase text-center">Testimonials</h2>
+            <h2 class="text-3xl font-bold mb-8 tracking-wide uppercase text-center" style="color: #A94442;">Testimonials
+            </h2>
             <div class="flex space-x-6 overflow-x-auto snap-x pb-4">
                 <!-- Testimonial Card 1 -->
                 <div
@@ -166,54 +168,57 @@
         </div>
     </section>
 
-    <section id="pricing" class="pt-24 pb-8 px-6 bg-white scroll-mt-16">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl font-bold text-center mb-2 tracking-wide uppercase">Pricing</h2>
-            <p class="text-2xl text-gray-400 font-semibold text-center mb-12">Straightforward sessions</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 justify-center max-w-2xl mx-auto">
+    <div class="w-full h-px bg-white"></div>
+
+
+    <section id="pricing" class="pt-16 pb-20 px-6 bg-black scroll-mt-16">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold mb-10 tracking-wide uppercase text-center text-white">Pricing</h2>
+            <div class="flex flex-col md:flex-row md:space-x-8 items-center justify-center">
+                <!-- Competition Coaching Card -->
                 <div
-                    class="bg-gray-800 p-8 rounded-lg w-full max-w-sm flex flex-col justify-between shadow-md border border-gray-700">
-                    <div>
-                        <h3 class="text-gray-200 text-lg font-medium flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-200" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 8v4l3 3m6 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            Competition Coaching
-                        </h3>
-                        <p class="text-4xl font-bold text-white my-4">$50</p>
-                        <ul class="text-gray-200 space-y-2">
-                            <li class="flex items-center gap-2">✓ Monthly rate</li>
-                            <li class="flex items-center gap-2">✓ Custom plans</li>
-                            <li class="flex items-center gap-2">✓ Athlete-focused</li>
-                        </ul>
-                    </div>
+                    class="bg-gray-800 rounded-xl shadow-md border border-gray-700 flex flex-col p-8 max-w-sm w-full mx-auto md:mx-0 mb-8 md:mb-0">
+                    <h3 class="flex items-center gap-2 text-lg font-semibold text-gray-200 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-200" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8v4l3 3m6 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Competition Coaching
+                    </h3>
+                    <p class="text-4xl font-bold text-white mb-4">$50 <span class="text-base font-normal">/ month</span>
+                    </p>
+                    <ul class="text-gray-200 space-y-2 mb-6">
+                        <li class="flex items-center gap-2">✓ Monthly rate</li>
+                        <li class="flex items-center gap-2">✓ Custom plans</li>
+                        <li class="flex items-center gap-2">✓ Athlete-focused</li>
+                    </ul>
                     <button
-                        class="bg-gray-800 text-white font-semibold py-3 rounded-lg w-full mt-6 hover:bg-gray-700 border-2 border-gray-200">
+                        class="bg-gray-800 text-white font-semibold py-3 rounded-lg w-full border-2 border-gray-200 hover:bg-gray-700 transition">
                         Enroll
                     </button>
                 </div>
-                <div
-                    class="bg-gray-800 p-8 rounded-lg w-full max-w-sm flex flex-col justify-between shadow-md border border-gray-700">
-                    <div>
-                        <h3 class="text-gray-200 text-lg font-medium flex items-center gap-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-200" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M12 8v4l3 3m6 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                            Technique Clinics
-                        </h3>
-                        <p class="text-4xl font-bold text-white my-4">$30</p>
-                        <ul class="text-gray-200 space-y-2">
-                            <li class="flex items-center gap-2">✓ 1 hour session</li>
-                            <li class="flex items-center gap-2">✓ Hands-on instruction</li>
-                            <li class="flex items-center gap-2">✓ Form assessment</li>
-                        </ul>
-                    </div>
+                <!-- Technique Clinics Card -->
+                <div class="rounded-xl shadow-md border border-gray-700 flex flex-col p-8 max-w-sm w-full mx-auto md:mx-0"
+                    style="background-color: #C99B46;">
+                    <h3 class="flex items-center gap-2 text-lg font-semibold text-gray-800 mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-800" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8v4l3 3m6 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        Technique Clinics
+                    </h3>
+                    <p class="text-4xl font-bold text-gray-800 mb-4">$30 <span class="text-base font-normal">/
+                            session</span></p>
+                    <ul class="text-gray-800 space-y-2 mb-6">
+                        <li class="flex items-center gap-2">✓ 1 hour session</li>
+                        <li class="flex items-center gap-2">✓ Hands-on instruction</li>
+                        <li class="flex items-center gap-2">✓ Form assessment</li>
+                    </ul>
                     <button
-                        class="bg-gray-800 text-white font-semibold py-3 rounded-lg w-full mt-6 hover:bg-gray-700 border-2 border-gray-200">
+                        class="text-gray-800 font-semibold py-3 rounded-lg w-full border-2 border-gray-800 hover:opacity-90 transition"
+                        style="background-color: #C99B46;">
                         Book now
                     </button>
                 </div>
@@ -221,10 +226,13 @@
         </div>
     </section>
 
-    <section id="contact-form" class="flex flex-col justify-center items-center min-h-screen px-6 py-12 scroll-mt-0">
+    <div class="w-full h-px bg-white"></div>
+
+    <section id="contact-form"
+        class="flex flex-col justify-center items-center min-h-screen px-6 pt-0 pb-12 scroll-mt-0 bg-black">
         <div class="text-center mb-8">
-            <p class="text-lg text-gray-600">Have questions before you commit?</p>
-            <p class="text-lg text-gray-600">Tony replies within 24 hours.</p>
+            <p class="text-lg text-white">Have questions before you commit?</p>
+            <p class="text-lg text-white">Tony replies within 24 hours.</p>
         </div>
         <form class="flex flex-col gap-4 bg-white rounded-xl border-2 border-[#A94442] shadow-lg p-8 max-w-xl w-full">
             <label class="text-gray-700 font-medium" for="name">Name</label>
@@ -243,10 +251,6 @@
                 Submit
             </button>
         </form>
-    </section>
-
-    <section id="contact" class="max-w-6xl mx-auto px-6 py-20">
-        <!-- Contact section content goes here -->
     </section>
 
     <footer class="bg-gray-100 py-6">
