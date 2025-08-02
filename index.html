@@ -220,18 +220,139 @@
         #testimonials .bar-dot.active {
             opacity: 1;
         }
+
+        /* Mobile header font size adjustments */
+        @media (max-width: 768px) {
+            header .font-bold {
+                font-size: 0.75rem;
+                /* 12px */
+            }
+
+            header nav a {
+                font-size: 0.6875rem;
+                /* 11px */
+            }
+        }
+
+        @media (max-width: 480px) {
+            header .font-bold {
+                font-size: 0.6875rem;
+                /* 11px */
+            }
+
+            header nav a {
+                font-size: 0.625rem;
+                /* 10px */
+            }
+        }
+
+        /* Hide nav on mobile, show hamburger */
+        @media (max-width: 640px) {
+            header nav {
+                display: none !important;
+            }
+
+            .mobile-menu-btn {
+                display: flex !important;
+            }
+        }
+
+        @media (min-width: 641px) {
+            .mobile-menu-btn {
+                display: none !important;
+            }
+        }
+
+        /* Mobile menu dropdown styles */
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100vw;
+            background: #fff;
+            z-index: 100;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            border-bottom: 1px solid #eee;
+        }
+
+        .mobile-menu.open {
+            display: flex;
+        }
+
+        .mobile-menu a {
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+            text-align: center;
+            color: #A94442;
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .mobile-menu a:last-child {
+            border-bottom: none;
+        }
     </style>
 </head>
 
 <body class="font-sans bg-white text-gray-900">
-    <header class="sticky top-0 z-50 bg-white flex justify-between items-center px-6 py-4">
-        <div class="font-bold text-gray-400 text-base">Lift A Ton Strength</div>
+    <header class="sticky top-0 z-50 bg-white flex justify-between items-center px-6 py-4 relative">
+        <div class="font-bold text-gray-600 text-xl whitespace-nowrap truncate" style="max-width: 60vw;">
+            Lift A Ton Strength
+        </div>
         <nav class="flex space-x-4">
             <a href="#about" class="text-gray-400 text-base">About</a>
             <a href="#pricing" class="text-gray-400 text-base">Prices</a>
-            <a href="#case-study" class="text-gray-400 text-base">Case Study</a>
             <a href="#contact-form" class="text-gray-400 text-base">Contact</a>
+            <a href="#case-study" class="text-gray-400 text-base">Case Study</a>
         </nav>
+        <!-- Hamburger button for mobile -->
+        <button
+            class="mobile-menu-btn flex flex-col justify-center items-center w-8 h-8 ml-2 rounded hover:bg-gray-200 focus:outline-none"
+            aria-label="Open menu" style="display:none;">
+            <span class="block w-5 h-0.5 bg-gray-500 mb-1"></span>
+            <span class="block w-5 h-0.5 bg-gray-500 mb-1"></span>
+            <span class="block w-5 h-0.5 bg-gray-500"></span>
+        </button>
+        <!-- Mobile menu dropdown -->
+        <div class="mobile-menu flex-col absolute left-0 top-full w-full bg-white shadow-lg" style="display:none;">
+            <a href="#about" class="block">About</a>
+            <a href="#pricing" class="block">Prices</a>
+            <a href="#contact-form" class="block">Contact</a>
+            <a href="#case-study" class="block">Case Study</a>
+
+        </div>
+        <script>
+            // Hamburger menu toggle
+            document.addEventListener('DOMContentLoaded', function () {
+                const btn = document.querySelector('.mobile-menu-btn');
+                const menu = document.querySelector('.mobile-menu');
+                if (btn && menu) {
+                    btn.addEventListener('click', function () {
+                        menu.classList.toggle('open');
+                        if (menu.classList.contains('open')) {
+                            menu.style.display = 'flex';
+                        } else {
+                            menu.style.display = 'none';
+                        }
+                    });
+                    // Close menu on link click
+                    menu.querySelectorAll('a').forEach(link => {
+                        link.addEventListener('click', () => {
+                            menu.classList.remove('open');
+                            menu.style.display = 'none';
+                        });
+                    });
+                    // Optional: close menu on outside click
+                    document.addEventListener('click', function (e) {
+                        if (!btn.contains(e.target) && !menu.contains(e.target)) {
+                            menu.classList.remove('open');
+                            menu.style.display = 'none';
+                        }
+                    });
+                }
+            });
+        </script>
     </header>
 
     <div class="flex justify-center items-center w-full bg-black pt-6 pb-2">
@@ -591,8 +712,7 @@
                     <span class="flex-grow" style="height:0.5px; background-color:#A94442; display:block;"></span>
                     <h2
                         class="text-3xl font-bold tracking-wide uppercase text-center text-white whitespace-nowrap mx-6 flex-shrink-0">
-                        Contact L.A.T.S.
-                    </h2>
+                        Contact Us </h2>
                     <span class="flex-grow" style="height:0.5px; background-color:#A94442; display:block;"></span>
                 </div>
             </div>
