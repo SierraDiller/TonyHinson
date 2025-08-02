@@ -51,10 +51,14 @@
             display: flex;
             gap: 1.5rem;
             overflow-x: auto;
-            scroll-snap-type: x proximity;
+            scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
             padding: 1rem;
             scroll-behavior: smooth;
+            scroll-padding: 0 1rem;
+            /* Add padding to ensure first and last cards can be centered */
+            padding-left: calc(50vw - 210px);
+            padding-right: calc(50vw - 210px);
         }
 
         #testimonials .testimonials-scroll::-webkit-scrollbar {
@@ -74,6 +78,8 @@
             box-sizing: border-box;
             margin: 0 auto;
             transition: box-shadow 0.3s cubic-bezier(.4, 0, .2, 1), transform 0.3s cubic-bezier(.4, 0, .2, 1);
+            /* Ensure proper centering on mobile */
+            scroll-snap-stop: always;
         }
 
         #testimonials .testimonial-card:hover {
@@ -88,6 +94,13 @@
                 max-width: 370px;
                 min-width: 260px;
             }
+
+            #testimonials .testimonials-scroll {
+                scroll-snap-type: x mandatory;
+                scroll-padding: 0 5vw;
+                padding-left: calc(50vw - 185px);
+                padding-right: calc(50vw - 185px);
+            }
         }
 
         @media (max-width: 480px) {
@@ -95,6 +108,12 @@
                 width: 88vw;
                 max-width: 340px;
                 min-width: 220px;
+            }
+
+            #testimonials .testimonials-scroll {
+                scroll-padding: 0 6vw;
+                padding-left: calc(50vw - 170px);
+                padding-right: calc(50vw - 170px);
             }
         }
 
@@ -104,6 +123,12 @@
                 max-width: 300px;
                 min-width: 180px;
             }
+
+            #testimonials .testimonials-scroll {
+                scroll-padding: 0 7.5vw;
+                padding-left: calc(50vw - 150px);
+                padding-right: calc(50vw - 150px);
+            }
         }
 
         @media (max-width: 340px) {
@@ -111,6 +136,12 @@
                 width: 82vw;
                 max-width: 260px;
                 min-width: 140px;
+            }
+
+            #testimonials .testimonials-scroll {
+                scroll-padding: 0 9vw;
+                padding-left: calc(50vw - 130px);
+                padding-right: calc(50vw - 130px);
             }
         }
 
@@ -440,10 +471,15 @@
                 dots.forEach((dot, i) => {
                     dot.addEventListener('click', () => {
                         const card = cards[i];
-                        // Scroll so that the card is positioned nicely in the scroll area
-                        const scrollTo = card.offsetLeft - scroll.offsetWidth * 0.1;
-                        scroll.scrollTo({
-                            left: scrollTo,
+                        // Calculate the center position for better snapping
+                        const cardRect = card.getBoundingClientRect();
+                        const scrollRect = scroll.getBoundingClientRect();
+                        const scrollCenter = scrollRect.left + scrollRect.width / 2;
+                        const cardCenter = cardRect.left + cardRect.width / 2;
+                        const offset = cardCenter - scrollCenter;
+
+                        scroll.scrollBy({
+                            left: offset,
                             behavior: 'smooth'
                         });
                     });
