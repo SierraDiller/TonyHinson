@@ -1,377 +1,232 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tony Rodriguez - Powerlifting Transformation Case Study | Lift A Ton Strength</title>
-    <meta name="description"
-        content="Discover how Tony Rodriguez added 155lbs to his powerlifting total in just 6 months through systematic strength training and proper programming.">
+    <title>Tony Rodriguez Powerlifting Case Study</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
-        html,
-        body {
-            background: #000 !important;
+        body { background: #0a0a0a !important; color: #fff; }
+        .case-title { 
+            color: #A94442; 
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
         }
-
-        .section-title {
-            color: #A94442;
-            letter-spacing: 0.01em;
+        .case-section { margin-bottom: 2.5rem; }
+        .case-table th, .case-table td { padding: 0.75rem 1.25rem; }
+        .case-table th { 
+            color: #A94442; 
+            font-size: 1.05rem;
+            font-weight: 700;
+            background: #181818;
+            border-bottom: 2px solid #A94442;
         }
-
-        .case-card {
-            background: #fff;
-            color: #222;
-            border: 1.5px solid #A94442;
-            border-radius: 0.75rem;
-            box-shadow: 0 2px 8px 0 rgba(169, 68, 66, 0.07);
+        .case-table td {
+            background: #181818;
+            border-bottom: 1px solid #232323;
         }
-
-        .case-highlight {
-            color: #A94442;
+        .case-table tr:last-child td { border-bottom: none; }
+        .case-table tr.font-bold td {
+            background: #1e1e1e;
+            color: #fff;
+            font-weight: 800;
         }
-
-        .case-label {
-            color: #A94442;
-            font-weight: 600;
-        }
-
         .case-quote {
-            background: #f7eaea;
-            border-left: 4px solid #A94442;
-            color: #222;
+            background: linear-gradient(90deg, #f7eaea 80%, #f7eaea 100%);
+            color: #181818;
+            border-left: 5px solid #A94442;
+            margin: 2.5rem 0 0.5rem 0;
+            padding: 1.25rem 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 2px 12px 0 rgba(169,68,66,0.08);
         }
-
-        .case-timeline {
-            border-left: 3px solid #A94442;
-            padding-left: 1.5rem;
-            margin-bottom: 1.5rem;
+        .case-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
         }
-
-        .case-section {
-            margin-bottom: 3rem;
+        @media (min-width: 1024px) {
+            .case-grid {
+                grid-template-columns: 1.1fr 1fr;
+                gap: 3.5rem;
+            }
+            .case-col-results { order: 1; }
+            .case-col-summary { order: 2; }
         }
-
-        .case-list li::before {
-            content: "•";
-            color: #A94442;
+        @media (max-width: 1023.98px) {
+            .case-col-results,
+            .case-col-summary {
+                order: unset;
+            }
+        }
+        @media (max-width: 640px) {
+            .case-section { margin-bottom: 1.25rem; }
+            .case-table th, .case-table td { padding: 0.5rem 0.25rem; font-size: 0.95rem; }
+            .case-quote { padding: 0.75rem 0.75rem; font-size: 1rem; }
+        }
+        @media (max-width: 480px) {
+            .case-table th, .case-table td { font-size: 0.85rem; }
+            .case-quote { font-size: 0.95rem; }
+        }
+        .athlete-badge {
             display: inline-block;
-            width: 1em;
-            margin-left: -1em;
-        }
-
-        .case-btn-primary {
             background: #A94442;
             color: #fff;
+            font-weight: 700;
+            font-size: 0.95rem;
+            letter-spacing: 0.04em;
+            padding: 0.25rem 0.85rem;
+            border-radius: 9999px;
+            margin-bottom: 1.25rem;
+            box-shadow: 0 2px 8px 0 rgba(169,68,66,0.10);
         }
-
-        .case-btn-primary:hover {
-            background: #6c120d;
+        .case-table {
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 2px 16px 0 rgba(0,0,0,0.10);
         }
-
-        .case-btn-secondary {
-            background: #fff;
+        .case-section h2 {
+            letter-spacing: 0.01em;
+        }
+        .case-section ul li {
+            padding-left: 0.1em;
+        }
+        .case-img-container {
+            background: linear-gradient(120deg, #1e1e1e 60%, #A94442 100%);
+            border-radius: 1rem;
+            box-shadow: 0 4px 24px 0 rgba(169,68,66,0.10);
+            overflow: hidden;
+            margin-bottom: 2rem;
+            border: 2px solid #A94442;
+        }
+        .case-img {
+            width: 100%;
+            object-fit: cover;
+            object-position: top;
+            min-height: 220px;
+            max-height: 340px;
+            display: block;
+            background: #000;
+            transition: transform 0.3s cubic-bezier(.4,2,.6,1);
+        }
+        .case-img:hover {
+            transform: scale(1.025);
+        }
+        .case-summary-list li b {
             color: #A94442;
-            border: 1.5px solid #A94442;
+            font-weight: 700;
         }
-
-        .case-btn-secondary:hover {
-            background: #f7eaea;
+        .case-section ul {
+            margin-top: 0.5rem;
+        }
+        /* Added for smaller quote font */
+        .case-quote-text {
+            font-size: 1.05rem;
+        }
+        @media (min-width: 640px) {
+            .case-quote-text {
+                font-size: 1.15rem;
+            }
         }
     </style>
 </head>
+<body class="font-sans bg-[#0a0a0a] text-white min-h-screen">
 
-<body class="font-sans bg-[#000] text-white">
-    <!-- Header/Navbar -->
-    <header
-        class="sticky top-0 z-50 bg-white flex justify-between items-center px-6 py-4 border-b border-[#A94442] text-black">
-        <div class="font-bold text-base">
-            <a href="TonyCaseLocal.html" class="hover:text-[#A94442] transition-colors">← Back to Case Studies</a>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="py-16 px-6 bg-white bg-opacity-5">
-        <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-5xl md:text-6xl font-bold mb-2 section-title">Tony Rodriguez</h1>
-            <p class="text-xl mb-2 text-gray-200">Powerlifting Transformation</p>
-            <div class="text-lg text-gray-300 mb-8">6-Month Strength Journey</div>
-            <!-- Key Results Banner -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-2">
-                <div class="case-card p-5 flex flex-col items-center">
-                    <div class="text-3xl font-bold case-highlight">+155lbs</div>
-                    <div class="font-semibold mt-1">Total Added</div>
+    <div class="max-w-5xl mx-auto py-12 px-4 sm:px-8 md:px-12">
+        <a href="TonyCaseLocal.html" class="text-sm text-[#A94442] hover:underline block mb-8 font-semibold tracking-wide transition-colors">&larr; Back to Case Studies</a>
+        <div class="athlete-badge">Powerlifting Transformation</div>
+        <h1 class="text-4xl sm:text-5xl font-extrabold mb-2 case-title tracking-tight">Tony Rodriguez</h1>
+        <p class="text-lg sm:text-xl text-gray-200 mb-8 font-medium tracking-wide">6 Months of Elite Strength Progression</p>
+        <div class="case-grid items-start">
+            <!-- Results (left on desktop), Summary (right on desktop) -->
+            <div class="case-col-results">
+                <div class="case-img-container">
+                    <img 
+                        src="https://hiddengym.net/wp-content/uploads/2019/12/powerlifting.jpg" 
+                        alt="Powerlifting"
+                        class="case-img"
+                    >
                 </div>
-                <div class="case-card p-5 flex flex-col items-center">
-                    <div class="text-3xl font-bold case-highlight">6 months</div>
-                    <div class="font-semibold mt-1">Duration</div>
-                </div>
-                <div class="case-card p-5 flex flex-col items-center">
-                    <div class="text-3xl font-bold case-highlight">955lbs</div>
-                    <div class="font-semibold mt-1">Final Total</div>
+                <div class="case-section">
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-4 case-title">Results</h2>
+                    <div class="overflow-x-auto">
+                        <table class="case-table w-full text-base mb-4 min-w-[340px]">
+                            <thead>
+                                <tr>
+                                    <th class="text-left">Lift</th>
+                                    <th class="text-left">Start</th>
+                                    <th class="text-left">End</th>
+                                    <th class="text-left">Change</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Squat</td>
+                                    <td>285 lbs</td>
+                                    <td>335 lbs</td>
+                                    <td class="font-bold text-[#A94442]">+50 lbs</td>
+                                </tr>
+                                <tr>
+                                    <td>Bench Press</td>
+                                    <td>225 lbs</td>
+                                    <td>255 lbs</td>
+                                    <td class="font-bold text-[#A94442]">+30 lbs</td>
+                                </tr>
+                                <tr>
+                                    <td>Deadlift</td>
+                                    <td>290 lbs</td>
+                                    <td>365 lbs</td>
+                                    <td class="font-bold text-[#A94442]">+75 lbs</td>
+                                </tr>
+                                <tr class="font-bold">
+                                    <td>Total</td>
+                                    <td>800 lbs</td>
+                                    <td>955 lbs</td>
+                                    <td class="text-[#A94442]">+155 lbs</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Executive Summary -->
-    <section class="case-section px-6">
-        <div class="max-w-3xl mx-auto">
-            <h2 class="text-3xl font-bold mb-4 section-title">Executive Summary</h2>
-            <div class="case-card p-6">
-                <p class="text-base leading-relaxed mb-4">
-                    Tony Rodriguez, a 28-year-old powerlifter with 3 years of training experience, achieved remarkable
-                    strength gains through a systematic 6-month training program. Starting with a total of 800lbs across
-                    the three main lifts, Tony increased his total to 955lbs, representing a 19.4% improvement in
-                    overall strength.
-                </p>
-                <p class="text-base leading-relaxed">
-                    This case study demonstrates the effectiveness of periodized training, proper technique refinement,
-                    and strategic programming in powerlifting development. Tony's transformation serves as a blueprint
-                    for intermediate lifters looking to break through plateaus and achieve significant strength gains.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Background -->
-    <section class="case-section px-6">
-        <div class="max-w-3xl mx-auto">
-            <h2 class="text-3xl font-bold mb-4 section-title">Background & Starting Point</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="case-card p-5">
-                    <h3 class="text-xl font-bold mb-2 case-label">Athlete Profile</h3>
-                    <ul class="space-y-1 text-base">
-                        <li><strong>Age:</strong> 28 years old</li>
-                        <li><strong>Experience:</strong> 3 years powerlifting</li>
-                        <li><strong>Body Weight:</strong> 198lbs (89kg)</li>
-                        <li><strong>Height:</strong> 5'10" (178cm)</li>
-                        <li><strong>Training Frequency:</strong> 4x per week</li>
-                        <li><strong>Previous Best Total:</strong> 800lbs</li>
+            <div class="case-col-summary">
+                <div class="case-section">
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-4 case-title">Summary</h2>
+                    <ul class="case-summary-list list-none text-base space-y-2">
+                        <li><b>Name:</b> Tony Rodriguez</li>
+                        <li><b>Age:</b> 28</li>
+                        <li><b>Experience:</b> 3 years powerlifting</li>
+                        <li><b>Bodyweight:</b> 198 lbs (89 kg)</li>
+                        <li><b>Duration:</b> 6 months</li>
                     </ul>
                 </div>
-                <div class="case-card p-5">
-                    <h3 class="text-xl font-bold mb-2 case-label">Initial Assessment</h3>
-                    <div class="mb-3">
-                        <h4 class="font-semibold">Starting Lifts:</h4>
-                        <ul class="ml-4 list-disc text-base">
-                            <li>Squat: 285lbs</li>
-                            <li>Bench Press: 225lbs</li>
-                            <li>Deadlift: 290lbs</li>
-                            <li><strong>Total: 800lbs</strong></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold">Identified Weaknesses:</h4>
-                        <ul class="ml-4 list-disc text-base">
-                            <li>Inconsistent bench press lockout</li>
-                            <li>Deadlift grip strength</li>
-                            <li>Limited squat depth confidence</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Methodology -->
-    <section class="case-section px-6">
-        <div class="max-w-3xl mx-auto">
-            <h2 class="text-3xl font-bold mb-4 section-title">Training Methodology</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <div class="case-card p-5">
-                    <h3 class="text-xl font-bold mb-2 case-label">Program Structure</h3>
-                    <ul class="ml-4 list-disc text-base space-y-1">
-                        <li><strong>Phase 1 (Months 1-2):</strong> High volume, moderate intensity focusing on technique
-                            and muscle building</li>
-                        <li><strong>Phase 2 (Months 3-4):</strong> Moderate volume, high intensity with specific
-                            strength work</li>
-                        <li><strong>Phase 3 (Months 5-6):</strong> Low volume, maximum intensity with
-                            competition-specific training</li>
+                <div class="case-section">
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-4 case-title">Key Lessons</h2>
+                    <ul class="list-disc ml-6 text-base space-y-2">
+                        <li>Consistency is more important than perfection</li>
+                        <li>Addressing weak points accelerates progress</li>
+                        <li>Structured programming prevents plateaus</li>
+                        <li>Regular form checks help avoid injury</li>
                     </ul>
                 </div>
-                <div class="case-card p-5">
-                    <h3 class="text-xl font-bold mb-2 case-label">Key Training Principles</h3>
-                    <ul class="ml-4 list-disc text-base space-y-1">
-                        <li><strong>Progressive Overload:</strong> Systematic weight increases while maintaining proper
-                            form</li>
-                        <li><strong>Exercise Variation:</strong> Strategic use of accessory movements to address
-                            weaknesses</li>
-                        <li><strong>Recovery Management:</strong> Balanced training stress with adequate rest and
-                            nutrition</li>
+                <div class="case-section">
+                    <h2 class="text-2xl sm:text-3xl font-bold mb-4 case-title">Approach</h2>
+                    <ul class="list-disc ml-6 text-base space-y-2">
+                        <li>4x per week training: squat, bench, deadlift focus days</li>
+                        <li>Phased programming: high volume &rarr; high intensity &rarr; peaking</li>
+                        <li>Accessory work for weak points (bench lockout, grip, squat depth)</li>
+                        <li>Consistent progressive overload</li>
+                        <li>Tracked progress and adjusted as needed</li>
                     </ul>
                 </div>
-            </div>
-            <!-- Weekly Training Split -->
-            <div class="case-card p-6 mb-2">
-                <h3 class="text-xl font-bold mb-3 case-label">Weekly Training Split</h3>
-                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-                    <div>
-                        <h4 class="font-semibold">Monday</h4>
-                        <p class="text-sm">Squat Focus + Accessories</p>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold">Tuesday</h4>
-                        <p class="text-sm">Bench Focus + Accessories</p>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold">Thursday</h4>
-                        <p class="text-sm">Deadlift Focus + Accessories</p>
-                    </div>
-                    <div>
-                        <h4 class="font-semibold">Saturday</h4>
-                        <p class="text-sm">Recovery + Mobility</p>
-                    </div>
+                <div class="case-quote">
+                    <p class="italic case-quote-text mb-2 font-semibold">
+                        "The systematic approach to training made all the difference. Every session had a purpose, and the progressive overload kept me motivated. The biggest lesson was that consistency beats perfection every time."
+                    </p>
+                    <div class="font-bold text-base sm:text-lg mt-2">- Tony Rodriguez</div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Results -->
-    <section class="case-section px-6">
-        <div class="max-w-3xl mx-auto">
-            <h2 class="text-3xl font-bold mb-4 section-title">Results & Performance Data</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <div class="case-card p-5">
-                    <h3 class="text-xl font-bold mb-2 case-label">Starting Numbers</h3>
-                    <ul class="text-base space-y-1">
-                        <li class="flex justify-between"><span>Squat:</span> <span class="font-bold">285lbs</span></li>
-                        <li class="flex justify-between"><span>Bench Press:</span> <span class="font-bold">225lbs</span>
-                        </li>
-                        <li class="flex justify-between"><span>Deadlift:</span> <span class="font-bold">290lbs</span>
-                        </li>
-                        <li class="flex justify-between border-t pt-2 mt-2 text-lg font-bold"><span>Total:</span>
-                            <span>800lbs</span></li>
-                    </ul>
-                </div>
-                <div class="case-card p-5">
-                    <h3 class="text-xl font-bold mb-2 case-label">Final Numbers</h3>
-                    <ul class="text-base space-y-1">
-                        <li class="flex justify-between"><span>Squat:</span> <span
-                                class="font-bold text-green-600">335lbs (+50lbs)</span></li>
-                        <li class="flex justify-between"><span>Bench Press:</span> <span
-                                class="font-bold text-green-600">255lbs (+30lbs)</span></li>
-                        <li class="flex justify-between"><span>Deadlift:</span> <span
-                                class="font-bold text-green-600">365lbs (+75lbs)</span></li>
-                        <li class="flex justify-between border-t pt-2 mt-2 text-lg font-bold"><span>Total:</span> <span
-                                class="text-green-600">955lbs (+155lbs)</span></li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Progress Timeline -->
-            <div class="case-card p-6">
-                <h3 class="text-xl font-bold mb-3 case-label">Progress Timeline</h3>
-                <div>
-                    <div class="case-timeline mb-2">
-                        <h4 class="font-semibold">Month 1-2: Foundation Building</h4>
-                        <p class="text-sm">Established proper form and built work capacity. Added 25lbs to total.</p>
-                    </div>
-                    <div class="case-timeline mb-2">
-                        <h4 class="font-semibold">Month 3-4: Strength Development</h4>
-                        <p class="text-sm">Focused on strength-specific training. Added 45lbs to total.</p>
-                    </div>
-                    <div class="case-timeline">
-                        <h4 class="font-semibold">Month 5-6: Peak Performance</h4>
-                        <p class="text-sm">Competition-specific training and technique refinement. Added 85lbs to total.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Key Insights -->
-    <section class="case-section px-6">
-        <div class="max-w-3xl mx-auto">
-            <h2 class="text-3xl font-bold mb-4 section-title">Key Insights & Lessons Learned</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="case-card p-5">
-                    <h3 class="text-xl font-bold mb-2 case-label">What Worked</h3>
-                    <ul class="case-list space-y-2 text-base">
-                        <li>Consistent training schedule with proper recovery</li>
-                        <li>Progressive overload with technique focus</li>
-                        <li>Strategic accessory work for weak points</li>
-                        <li>Competition-specific preparation in final phase</li>
-                        <li>Regular form checks and video analysis</li>
-                    </ul>
-                </div>
-                <div class="case-card p-5">
-                    <h3 class="text-xl font-bold mb-2 case-label">Challenges Overcome</h3>
-                    <ul class="case-list space-y-2 text-base">
-                        <li>Bench press lockout inconsistency</li>
-                        <li>Deadlift grip strength limitations</li>
-                        <li>Squat depth confidence issues</li>
-                        <li>Training plateaus in month 3</li>
-                        <li>Competition anxiety management</li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Quote Section -->
-            <div class="case-quote p-6 rounded-lg mt-8 text-center">
-                <blockquote class="text-lg italic mb-2">
-                    "The systematic approach to training made all the difference. Every session had a purpose,
-                    and the progressive overload kept me motivated. The biggest lesson was that consistency
-                    beats perfection every time."
-                </blockquote>
-                <cite class="text-base font-bold">- Tony Rodriguez</cite>
-            </div>
-        </div>
-    </section>
-
-    <!-- Recommendations -->
-    <section class="case-section px-6">
-        <div class="max-w-3xl mx-auto">
-            <h2 class="text-3xl font-bold mb-4 section-title">Recommendations for Similar Athletes</h2>
-            <div class="case-card p-6">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <h3 class="text-xl font-bold mb-2 case-label">For Intermediate Lifters</h3>
-                        <ul class="case-list space-y-2 text-base">
-                            <li>Focus on technique before adding weight</li>
-                            <li>Use periodization to prevent plateaus</li>
-                            <li>Address weak points with specific accessories</li>
-                            <li>Maintain consistent training frequency</li>
-                            <li>Track progress with detailed logging</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h3 class="text-xl font-bold mb-2 case-label">Program Design Tips</h3>
-                        <ul class="case-list space-y-2 text-base">
-                            <li>Start with 12-16 week cycles</li>
-                            <li>Include deload weeks every 4-6 weeks</li>
-                            <li>Balance main lifts with accessories</li>
-                            <li>Prioritize recovery and nutrition</li>
-                            <li>Plan for competition preparation</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Call to Action -->
-    <section class="py-12 px-6 bg-[#A94442] bg-opacity-95">
-        <div class="max-w-3xl mx-auto text-center">
-            <h2 class="text-3xl font-bold text-white mb-3">Ready for Your Transformation?</h2>
-            <p class="text-lg text-white mb-6">Join the ranks of successful athletes who've achieved their goals with
-                proven training methods.</p>
-            <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="contact.html" class="case-btn-primary px-8 py-3 rounded-lg font-bold transition-colors">
-                    Start Your Journey
-                </a>
-                <a href="programs.html" class="case-btn-secondary px-8 py-3 rounded-lg font-bold transition-colors">
-                    View Programs
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-[#000] py-6 mt-12">
-        <div class="max-w-4xl mx-auto px-6 text-center">
-            <p class="text-gray-400">© 2025 Lift A Ton Strength. Built with strength and strategy.</p>
-        </div>
-    </footer>
+    </div>
 </body>
-
 </html>
