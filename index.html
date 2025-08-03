@@ -670,27 +670,37 @@
         </form>
     </section>
 
-    <section class="bg-black py-16 px-6">
+    <section class="bg-black py-12 px-4 sm:py-16 sm:px-6 lg:py-20">
         <div class="max-w-4xl mx-auto text-center">
-            <div class="flex items-center justify-center mb-4 w-full">
-                <span class="flex-grow h-0.5" style="background-color: #A94442; max-width: 80px; display:block;"></span>
-                <h2 class="text-4xl font-extrabold text-white mx-6 whitespace-nowrap flex-shrink-0">See Real Athlete Transformations</h2>
-                <span class="flex-grow h-0.5" style="background-color: #A94442; max-width: 80px; display:block;"></span>
+            <div class="flex items-center justify-center mb-6 w-full gap-2 sm:gap-4">
+                <!-- Left red line -->
+                <span class="flex-grow h-0.5 bg-[#A94442] max-w-[80px] sm:max-w-[120px]"></span>
+                <span class="flex-grow" style="height:0.5px; background-color:#A94442; display:block;"></span>
+                <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white mx-2 sm:mx-4 whitespace-normal text-center flex-shrink-0">
+                    Case Studies By Tony
+                </h2>
+                <span class="flex-grow" style="height:0.5px; background-color:#A94442; display:block;"></span>
+
+                <!-- Right red line -->
+                <span class="flex-grow h-0.5 bg-[#A94442] max-w-[80px] sm:max-w-[120px]"></span>
             </div>
-            <p class="text-lg text-gray-400 mb-10">
+            <p class="text-base sm:text-lg text-gray-400 mb-8 sm:mb-10 px-0 sm:px-8">
                 Explore detailed case studies of lifters who have achieved remarkable results with Lift A Ton Strength. Discover their journeys, challenges, and the strategies that led to their success.
             </p>
             <div class="flex justify-center">
                 <a href="TonyCaseLocal.html"
-                    class="bg-[#A94442] text-white font-semibold py-3 rounded-lg w-full border-2 border-gray-200 hover:bg-red-500 hover:scale-105 transition-all duration-200"
-                    style="box-shadow: 0 8px 32px rgb(29, 4, 4), 0 2px 8px rgb(232, 232, 232); max-width: 320px;"
-                    >
+                    class="bg-red-600 text-white font-semibold py-3 rounded-lg w-full xs:w-auto border-2 border-gray-200 hover:scale-105 transition-all duration-200 text-base sm:text-lg"
+                    style="background-color: #A94442; box-shadow: 0 8px 32px rgb(29, 4, 4), 0 2px 8px rgb(232, 232, 232); max-width: 320px;"
+                    onmouseover="this.style.backgroundColor='#55010F';"
+                    onmouseout="this.style.backgroundColor='#A94442';"
+                >
                     View Case Studies
                 </a>
             </div>
         </div>
+        <!-- Add bottom black padding below the section -->
+        <div class="w-full bg-black" style="height: 50px;"></div>
     </section>
-
 
     <footer class="bg-gray-100 py-6">
         <div class="max-w-6xl mx-auto px-6 text-center">
