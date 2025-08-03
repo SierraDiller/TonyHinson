@@ -50,19 +50,11 @@
         #testimonials .testimonials-scroll {
             display: flex;
             gap: 1.5rem;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            padding: 1rem;
-            scroll-behavior: smooth;
-            scroll-padding: 0 1rem;
+            /* Removed overflow-x: auto and scroll bar related properties */
+            padding: 1rem 1rem 2rem 1rem;
             /* Add padding to ensure first and last cards can be centered */
             padding-left: calc(50vw - 210px);
             padding-right: calc(50vw - 210px);
-        }
-
-        #testimonials .testimonials-scroll::-webkit-scrollbar {
-            display: none;
         }
 
         #testimonials .testimonial-card {
@@ -87,61 +79,63 @@
             transform: translateY(-4px) scale(1.025);
         }
 
+        /* Active card styling */
+        #testimonials .testimonial-card.active {
+            transform: scale(1.05);
+            box-shadow: 0 12px 40px rgba(169, 68, 66, 0.25), 0 4px 12px rgba(0, 0, 0, 0.12);
+            z-index: 5;
+        }
+
         /* --- MOBILE: Make testimonial cards smaller than screen width --- */
         @media (max-width: 630px) {
             #testimonials .testimonial-card {
-                width: 90vw;
-                max-width: 370px;
-                min-width: 260px;
+                width: 85vw;
+                max-width: 320px;
+                min-width: 240px;
             }
 
             #testimonials .testimonials-scroll {
-                scroll-snap-type: x mandatory;
-                scroll-padding: 0 5vw;
-                padding-left: calc(50vw - 185px);
-                padding-right: calc(50vw - 185px);
+                padding-left: calc(50vw - 160px);
+                padding-right: calc(50vw - 160px);
             }
         }
 
         @media (max-width: 480px) {
             #testimonials .testimonial-card {
-                width: 88vw;
-                max-width: 340px;
-                min-width: 220px;
+                width: 82vw;
+                max-width: 280px;
+                min-width: 200px;
             }
 
             #testimonials .testimonials-scroll {
-                scroll-padding: 0 6vw;
-                padding-left: calc(50vw - 170px);
-                padding-right: calc(50vw - 170px);
+                padding-left: calc(50vw - 140px);
+                padding-right: calc(50vw - 140px);
             }
         }
 
         @media (max-width: 375px) {
             #testimonials .testimonial-card {
-                width: 85vw;
-                max-width: 300px;
-                min-width: 180px;
+                width: 78vw;
+                max-width: 260px;
+                min-width: 160px;
             }
 
             #testimonials .testimonials-scroll {
-                scroll-padding: 0 7.5vw;
-                padding-left: calc(50vw - 150px);
-                padding-right: calc(50vw - 150px);
+                padding-left: calc(50vw - 130px);
+                padding-right: calc(50vw - 130px);
             }
         }
 
         @media (max-width: 340px) {
             #testimonials .testimonial-card {
-                width: 82vw;
-                max-width: 260px;
+                width: 75vw;
+                max-width: 240px;
                 min-width: 140px;
             }
 
             #testimonials .testimonials-scroll {
-                scroll-padding: 0 9vw;
-                padding-left: calc(50vw - 130px);
-                padding-right: calc(50vw - 130px);
+                padding-left: calc(50vw - 120px);
+                padding-right: calc(50vw - 120px);
             }
         }
 
@@ -152,15 +146,51 @@
             }
         }
 
-        /* Show scroll bar for tablet/desktop, hide dots */
-        @media (min-width: 768px) {
-            #testimonials .testimonial-bar {
-                display: none !important;
-            }
+        /* Custom testimonial scrollbar styles */
+        #testimonials .testimonials-scroll {
+            scroll-snap-type: x mandatory;
+            overflow-x: auto;
+            scrollbar-width: none;
+            /* Firefox */
+            -ms-overflow-style: none;
+            /* IE and Edge */
+        }
 
-            #testimonials .testimonial-progress-bar {
-                display: flex !important;
-            }
+        #testimonials .testimonials-scroll::-webkit-scrollbar {
+            display: none;
+            /* Chrome, Safari, Opera */
+        }
+
+        /* Custom scroll indicators */
+        .scroll-indicators {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-top: 1.5rem;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .scroll-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: 2px solid white;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .scroll-indicator.active {
+            background: white;
+            transform: scale(1.2);
+        }
+
+        .scroll-indicator:hover {
+            transform: scale(1.1);
         }
 
         @media (min-width: 1025px) {
@@ -168,57 +198,6 @@
                 width: 350px;
                 max-width: 350px;
             }
-        }
-
-        /* Progress bar styles */
-        #testimonials .testimonial-progress-bar {
-            display: none;
-            width: 100%;
-            max-width: 420px;
-            height: 10px;
-            background: #232323;
-            border-radius: 6px;
-            margin: 2rem auto 0 auto;
-            overflow: hidden;
-            position: relative;
-            box-shadow: 0 2px 12px 0 #0002;
-        }
-
-        #testimonials .testimonial-progress-bar-thumb {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 60px;
-            /* Thumb width, can be adjusted for visual preference */
-            background: #fff;
-            border-radius: 6px;
-            box-shadow: 0 0 12px 0 #fff2;
-            transition: left 0.2s ease-out;
-            z-index: 2;
-            will-change: left;
-        }
-
-        /* Dots for mobile only */
-        #testimonials .testimonial-bar {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 0.5rem;
-            margin-top: 1.25rem;
-        }
-
-        #testimonials .bar-dot {
-            width: 18px;
-            height: 6px;
-            border-radius: 3px;
-            background: #fff;
-            opacity: 0.4;
-            transition: opacity 0.2s;
-        }
-
-        #testimonials .bar-dot.active {
-            opacity: 1;
         }
 
         /* Mobile header font size adjustments */
@@ -495,178 +474,99 @@
             <div class="testimonials-scroll">
                 <!-- Testimonial Card 1: Julia -->
                 <div class="testimonial-card">
-                    <p class="text-base md:text-lg text-gray-700 italic mb-2 md:mb-4">
-                        "He was very flexible and made my program work for me. His response time is great and always
-                        makes
-                        time to call and discuss my lifting."
-                    </p>
-                    <span class="font-semibold text-[#A94442]">Julia Olejnicak</span>
+                    <div class="relative z-10">
+                        <p class="text-base md:text-lg text-gray-800 italic mb-4 leading-relaxed">
+                            "He was very flexible and made my program work for me. His response time is great and always
+                            makes
+                            time to call and discuss my lifting."
+                        </p>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-[#A94442] rounded-full flex items-center justify-center mr-3">
+                                <span class="text-white text-sm font-bold">J</span>
+                            </div>
+                            <span class="font-semibold text-[#A94442] text-lg">Julia Olejnicak</span>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Testimonial Card 2: Layla -->
                 <div class="testimonial-card">
-                    <p class="text-base md:text-lg text-gray-700 italic mb-2 md:mb-4">
-                        "As one of his earlier athletes, I’ve seen firsthand how committed he is to the sport of
-                        powerlifting, and how much he cares for every client he has."
-                    </p>
-                    <span class="font-semibold text-[#A94442]">Layla Obregon</span>
+                    <div class="relative z-10">
+                        <p class="text-base md:text-lg text-gray-800 italic mb-4 leading-relaxed">
+                            "As one of his earlier athletes, I've seen firsthand how committed he is to the sport of
+                            powerlifting, and how much he cares for every client he has."
+                        </p>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-[#A94442] rounded-full flex items-center justify-center mr-3">
+                                <span class="text-white text-sm font-bold">L</span>
+                            </div>
+                            <span class="font-semibold text-[#A94442] text-lg">Layla Obregon</span>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Testimonial Card 3: Tanner -->
                 <div class="testimonial-card">
-                    <p class="text-base md:text-lg text-gray-700 italic mb-2 md:mb-4">
-                        "Not only does Tony bring the expertise, knowledge and patience of an elite coach, but he brings
-                        an
-                        energy and passion that is unmatched."
-                    </p>
-                    <span class="font-semibold text-[#A94442]">Tanner Jacobi</span>
+                    <div class="relative z-10">
+                        <p class="text-base md:text-lg text-gray-800 italic mb-4 leading-relaxed">
+                            "Not only does Tony bring the expertise, knowledge and patience of an elite coach, but he
+                            brings
+                            an
+                            energy and passion that is unmatched."
+                        </p>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-[#A94442] rounded-full flex items-center justify-center mr-3">
+                                <span class="text-white text-sm font-bold">T</span>
+                            </div>
+                            <span class="font-semibold text-[#A94442] text-lg">Tanner Jacobi</span>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Testimonial Card 4: Kristen -->
                 <div class="testimonial-card">
-                    <p class="text-base md:text-lg text-gray-700 italic mb-2 md:mb-4">
-                        "Whether it’s a PR or a missed lift, he always makes me feel like a capable and valued athlete."
-                    </p>
-                    <span class="font-semibold text-[#A94442]">Kristen Palmer</span>
+                    <div class="relative z-10">
+                        <p class="text-base md:text-lg text-gray-800 italic mb-4 leading-relaxed">
+                            "Whether it's a PR or a missed lift, he always makes me feel like a capable and valued
+                            athlete."
+                        </p>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-[#A94442] rounded-full flex items-center justify-center mr-3">
+                                <span class="text-white text-sm font-bold">K</span>
+                            </div>
+                            <span class="font-semibold text-[#A94442] text-lg">Kristen Palmer</span>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Testimonial Card 5: Landon -->
                 <div class="testimonial-card">
-                    <p class="text-base md:text-lg text-gray-700 italic mb-2 md:mb-4">
-                        "Tony consistently spends hours researching and fine-tuning individualized programs for his
-                        clients — not because he has to, but because he genuinely cares."
-                    </p>
-                    <span class="font-semibold text-[#A94442]">Landon Stansberry</span>
+                    <div class="relative z-10">
+                        <p class="text-base md:text-lg text-gray-800 italic mb-4 leading-relaxed">
+                            "Tony consistently spends hours researching and fine-tuning individualized programs for his
+                            clients — not because he has to, but because he genuinely cares."
+                        </p>
+                        <div class="flex items-center">
+                            <div class="w-8 h-8 bg-[#A94442] rounded-full flex items-center justify-center mr-3">
+                                <span class="text-white text-sm font-bold">L</span>
+                            </div>
+                            <span class="font-semibold text-[#A94442] text-lg">Landon Stansberry</span>
+                        </div>
+                    </div>
                 </div>
             </div>
 
-            <!-- Progress bar for tablet/desktop, hidden on mobile -->
-            <div class="testimonial-progress-bar" aria-hidden="true">
-                <div class="testimonial-progress-bar-thumb" style="left: 0px"></div>
-            </div>
-
-            <!-- Dots for mobile only -->
-            <div class="testimonial-bar md:hidden">
-                <span class="bar-dot"></span>
-                <span class="bar-dot"></span>
-                <span class="bar-dot"></span>
-                <span class="bar-dot"></span>
-                <span class="bar-dot"></span>
+            <!-- Scroll Indicators -->
+            <div class="scroll-indicators">
+                <div class="scroll-indicator active" data-index="0"></div>
+                <div class="scroll-indicator" data-index="1"></div>
+                <div class="scroll-indicator" data-index="2"></div>
+                <div class="scroll-indicator" data-index="3"></div>
+                <div class="scroll-indicator" data-index="4"></div>
             </div>
         </div>
 
-        <script>
-            const scroll = document.querySelector('#testimonials .testimonials-scroll');
-            const cards = document.querySelectorAll('#testimonials .testimonial-card');
-            const progressThumb = document.querySelector('#testimonials .testimonial-progress-bar-thumb');
-            const progressBar = document.querySelector('#testimonials .testimonial-progress-bar');
-            const dots = document.querySelectorAll('#testimonials .bar-dot');
 
-            function updateProgressThumb() {
-                if (!progressThumb || !scroll || !progressBar) return;
-                // Get bar width and thumb width
-                const barRect = progressBar.getBoundingClientRect();
-                const barWidth = barRect.width;
-                const thumbWidth = progressThumb.offsetWidth;
-
-                // Calculate scroll progress
-                const maxScroll = scroll.scrollWidth - scroll.clientWidth;
-                let scrollLeft = scroll.scrollLeft;
-                let percent = 0;
-                if (maxScroll > 0) {
-                    percent = scrollLeft / maxScroll;
-                }
-                // Calculate thumb position so it follows scroll, but never overflows bar
-                const minLeft = 0;
-                const maxLeft = barWidth - thumbWidth;
-                let left = minLeft + percent * maxLeft;
-                // Clamp
-                left = Math.max(minLeft, Math.min(left, maxLeft));
-                progressThumb.style.left = left + "px";
-            }
-
-            function updateDots() {
-                if (!dots.length) return;
-                // Find the card whose center is closest to the center of the scroll area
-                const scrollLeft = scroll.scrollLeft;
-                const scrollCenter = scrollLeft + scroll.offsetWidth / 2;
-                let idx = 0;
-                let minDist = Infinity;
-                cards.forEach((card, i) => {
-                    const cardStart = card.offsetLeft;
-                    const cardCenter = cardStart + card.offsetWidth / 2;
-                    const dist = Math.abs(cardCenter - scrollCenter);
-                    if (dist < minDist) {
-                        minDist = dist;
-                        idx = i;
-                    }
-                });
-                dots.forEach((dot, i) => {
-                    dot.classList.toggle('active', i === idx);
-                });
-            }
-
-            // Always update progress bar on scroll (for tablet/desktop)
-            if (scroll) {
-                scroll.addEventListener('scroll', () => {
-                    updateProgressThumb();
-                    updateDots();
-                }, { passive: true });
-                // Initial update
-                window.addEventListener('load', () => {
-                    updateProgressThumb();
-                    updateDots();
-                });
-            }
-
-            // Dots click for mobile
-            if (dots.length) {
-                dots.forEach((dot, i) => {
-                    dot.addEventListener('click', () => {
-                        const card = cards[i];
-                        // Calculate the center position for better snapping
-                        const cardRect = card.getBoundingClientRect();
-                        const scrollRect = scroll.getBoundingClientRect();
-                        const scrollCenter = scrollRect.left + scrollRect.width / 2;
-                        const cardCenter = cardRect.left + cardRect.width / 2;
-                        const offset = cardCenter - scrollCenter;
-
-                        scroll.scrollBy({
-                            left: offset,
-                            behavior: 'smooth'
-                        });
-                    });
-                });
-            }
-
-            // Responsive: show/hide progress bar or dots and update thumb width
-            function handleResize() {
-                const isMobile = window.matchMedia("(max-width: 767px)").matches;
-                const progressBarContainer = document.querySelector('#testimonials .testimonial-progress-bar');
-                const dotsBar = document.querySelector('#testimonials .testimonial-bar');
-                if (progressBarContainer) {
-                    progressBarContainer.style.display = isMobile ? 'none' : 'flex';
-                }
-                if (dotsBar) {
-                    dotsBar.style.display = isMobile ? 'flex' : 'none';
-                }
-                // Adjust thumb width to be proportional to visible area vs total scroll area
-                if (progressThumb && scroll && progressBar) {
-                    const barRect = progressBar.getBoundingClientRect();
-                    const barWidth = barRect.width;
-                    const visible = scroll.clientWidth;
-                    const total = scroll.scrollWidth;
-                    let thumbWidth = barWidth * (visible / total);
-                    // Clamp to a minimum width for usability
-                    thumbWidth = Math.max(40, Math.min(thumbWidth, barWidth));
-                    progressThumb.style.width = thumbWidth + "px";
-                    updateProgressThumb();
-                }
-            }
-            window.addEventListener('resize', handleResize);
-            window.addEventListener('load', handleResize);
-            handleResize();
-        </script>
     </section>
 
     <!-- Pricing & Programs Section -->
@@ -735,7 +635,7 @@
 
     <!-- contact-form -->
     <section id="contact-form"
-        class="flex flex-col justify-center items-center min-h-screen px-6 pt-10 sm:pt-0 pb-12 scroll-mt-0 bg-black"
+        class="flex flex-col justify-center items-center min-h-screen px-6 pt-10 sm:pt-0 pb-12 scroll-mt-40 bg-black"
         style="margin-top: -80px;">
         <section class="w-full py-3 bg-black">
             <div class="max-w-6xl mx-auto px-6">
@@ -783,6 +683,78 @@
             <p class="text-gray-700 mt-2">Affiliations: USAPL, IPF</p>
         </div>
     </footer>
+
+    <script>
+        // Testimonials scroll functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const testimonialsScroll = document.querySelector('.testimonials-scroll');
+            const scrollIndicators = document.querySelectorAll('.scroll-indicator');
+            const testimonialCards = document.querySelectorAll('.testimonial-card');
+
+            if (!testimonialsScroll || scrollIndicators.length === 0) return;
+
+            // Function to update active indicator
+            function updateActiveIndicator() {
+                const scrollLeft = testimonialsScroll.scrollLeft;
+                const cardWidth = testimonialCards[0].offsetWidth + 24; // card width + gap
+                const currentIndex = Math.round(scrollLeft / cardWidth);
+
+                scrollIndicators.forEach((indicator, index) => {
+                    if (index === currentIndex) {
+                        indicator.classList.add('active');
+                    } else {
+                        indicator.classList.remove('active');
+                    }
+                });
+
+                // Update active card
+                testimonialCards.forEach((card, index) => {
+                    if (index === currentIndex) {
+                        card.classList.add('active');
+                    } else {
+                        card.classList.remove('active');
+                    }
+                });
+            }
+
+            // Function to scroll to specific testimonial
+            function scrollToTestimonial(index) {
+                const cardWidth = testimonialCards[0].offsetWidth + 24; // card width + gap
+                const scrollPosition = index * cardWidth;
+                testimonialsScroll.scrollTo({
+                    left: scrollPosition,
+                    behavior: 'smooth'
+                });
+            }
+
+            // Add scroll event listener
+            testimonialsScroll.addEventListener('scroll', updateActiveIndicator);
+
+            // Add click event listeners to indicators
+            scrollIndicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    scrollToTestimonial(index);
+                });
+            });
+
+            // Initialize active indicator
+            updateActiveIndicator();
+
+            // Center the first card on mobile
+            function centerFirstCard() {
+                const cardWidth = testimonialCards[0].offsetWidth;
+                const containerWidth = testimonialsScroll.offsetWidth;
+                const scrollPosition = (cardWidth - containerWidth) / 2;
+
+                // Always center the first card, even if scrollPosition is negative
+                testimonialsScroll.scrollLeft = Math.max(0, scrollPosition);
+            }
+
+            // Center first card on load and resize
+            setTimeout(centerFirstCard, 100); // Small delay to ensure DOM is ready
+            window.addEventListener('resize', centerFirstCard);
+        });
+    </script>
 </body>
 
 </html>
