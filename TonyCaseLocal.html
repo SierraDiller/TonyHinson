@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Results from Real Athletes - Lift A Ton Strength</title>
+    <meta name="description" content="Discover how real athletes achieved incredible transformations with Lift A Ton Strength. Browse case studies by goal and results.">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        html, body {
+            scroll-behavior: smooth;
+            background: #000 !important;
+        }
+        .hover-animate:hover {
+            transform: scale(1.05);
+            background-color: #fff;
+            transition: transform 0.2s, background-color 0.2s;
+        }
+        .case-card {
+            transition: all 0.3s;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+        }
+        .case-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.15), 0 10px 10px -5px rgba(0,0,0,0.08);
+        }
+        .filter-btn {
+            border: 1px solid #A94442 !important;
+            color: #A94442 !important;
+            background-color: #fff !important;
+            outline: none;
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.2s;
+        }
+        .filter-btn.active {
+            background-color: #6c120d !important;
+            color: #fff !important;
+        }
+        .filter-btn:not(.active):hover {
+            background-color: #A94442 !important;
+            color: #fff !important;
+        }
+        .search-highlight {
+            background-color: #A94442;
+            color: #000;
+            padding: 2px 4px;
+            border-radius: 2px;
+        }
+        .loading-spinner {
+            border: 3px solid #fff;
+            border-top: 3px solid #A94442;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg);}
+            100% { transform: rotate(360deg);}
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-white text-black" style="background: #fff !important;">
+    <!-- Header/Navbar -->
+    <header class="sticky top-0 z-50 bg-white flex items-center justify-between px-4 py-2 border-b" style="border-color: #000;">
+        <div class="flex items-center w-full">
+            <a href="https://tony-hinson.vercel.app/" class="flex items-center text-black hover:text-black transition-colors mr-2" aria-label="Back to Lift A Ton Strength">
+                <span class="text-lg font-extrabold" style="line-height:1; font-family: 'Inter', 'Segoe UI', 'Arial', sans-serif;">&lt;</span>
+            </a>
+            <div class="flex-1 flex justify-center">
+                <span class="font-bold text-gray-600 text-base whitespace-nowrap truncate" style="max-width: 60vw; font-family: 'Inter', 'Segoe UI', 'Arial', sans-serif;">
+                    Lift A Ton Strength
+                </span>
+            </div>
+            <div style="width:1.5rem;"></div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-black py-20 px-6 pb-8">
+        <div class="max-w-6xl mx-auto text-center">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-red-900 to-white bg-clip-text text-transparent">
+                Real Results from Real Athletes
+            </h1>
+            <p class="text-xl" style="color:#fff; margin-bottom:2rem; max-width:48rem; margin-left:auto; margin-right:auto;">
+                Discover how dedicated athletes transformed their strength, physique, and performance through proven training methods.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4 text-sm">
+                <div class="px-4 py-2 rounded-full" style="background-color:#fff; color:#000;">
+                    <span class="font-bold" style="color:#A94442;" id="totalAthletes">10+</span>
+                    <span style="color:#000;">Athletes Transformed</span>
+                </div>
+                <div class="px-4 py-2 rounded-full" style="background-color:#fff; color:#000;">
+                    <span class="font-bold" style="color:#A94442;">2+</span>
+                    <span style="color:#000;">Subjects Covered</span>
+                </div>
+                <div class="px-4 py-2 rounded-full" style="background-color:#fff; color:#000;">
+                    <span class="font-bold" style="color:#A94442;">100%</span>
+                    <span style="color:#000;">Real Results</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Author Credit -->
+    <section class="bg-black pt-0 pb-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex justify-center">
+                <p class="italic text-white text-2xl md:text-3xl font-bold text-center">By Tony Hinson</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search and Filter Section -->
+    <section class="bg-black py-6 sm:py-8 px-4 sm:px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="mb-4 sm:mb-6">
+                <input type="text" id="searchInput" placeholder="Search athletes or results..." class="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base"
+                    style="background-color:#fff; border:1px solid #A94442; color:#000; border-radius:0.5rem;">
+            </div>
+            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-3 sm:gap-4 mb-4 sm:mb-6">
+                <div class="flex flex-wrap gap-2 sm:gap-3">
+                    <button class="filter-btn active px-3 sm:px-4 py-2 rounded-lg font-bold transition-colors text-sm sm:text-base" data-filter="all">
+                        All Cases
+                    </button>
+                    <button class="filter-btn px-3 sm:px-4 py-2 rounded-lg font-bold transition-colors text-sm sm:text-base" data-filter="strength">
+                        Strength
+                    </button>
+                    <button class="filter-btn px-3 sm:px-4 py-2 rounded-lg font-bold transition-colors text-sm sm:text-base" data-filter="injuries">
+                        Injuries
+                    </button>
+                </div>
+                <div class="flex items-center gap-2 sm:gap-4">
+                    <span class="text-sm sm:text-base" style="color:#fff;">Sort by:</span>
+                    <select id="sortSelect" class="px-2 sm:px-3 py-2 rounded-lg text-black text-sm sm:text-base" style="background-color:#fff; border:1px solid #fff;">
+                        <option value="recent">Most Recent</option>
+                        <option value="impressive">Most Impressive</option>
+                        <option value="name">Name A-Z</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Grid -->
+    <section class="py-12 px-6" style="background: #000;">
+        <div class="max-w-6xl mx-auto">
+            <div id="caseStudiesGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 items-stretch"></div>
+            <div id="noResults" class="hidden text-center py-12">
+                <div class="text-[#fff] text-xl mb-4">No case studies found</div>
+                <p class="text-[#fff]">Try adjusting your search or filters</p>
+            </div>
+            <div id="loadMoreContainer" class="text-center mt-12 hidden">
+                <button id="loadMoreBtn" class="bg-[#A94442] text-white px-8 py-4 rounded-lg font-bold transition-colors hover:bg-[#8B3634]">
+                    Load More Case Studies
+                </button>
+                <div id="loadingSpinner" class="hidden mt-4">
+                    <div class="loading-spinner mx-auto"></div>
+                    <p class="text-[#fff] mt-2">Loading more case studies...</p>
+                </div>
+            </div>
+            <div id="resultsCount" class="text-center mt-8 text-[#fff]">
+                Showing <span id="showingCount">0</span> of <span id="totalCount">0</span> case studies
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-16 px-6" style="background: linear-gradient(to right, #6c120d, #6c120d);">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-bold text-white mb-6">Ready for Your Transformation?</h2>
+            <p class="text-xl text-white mb-8">Join the ranks of successful athletes who've achieved their goals with proven training methods.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="contact.html" class="bg-black text-white px-8 py-4 rounded-lg font-bold transition-colors" style="background-color:#000;">
+                    Start Your Journey
+                </a>
+                <a href="programs.html" class="bg-white text-black px-8 py-4 rounded-lg font-bold transition-colors" style="background-color:#fff;">
+                    View Programs
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-6">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <p class="text-[#fff]">© 2025 Lift A Ton Strength. Built with strength and strategy.</p>
+        </div>
+    </footer>
+
+    <!-- Case Studies Data and Management System -->
+    <script src="case-studies-api.js"></script>
+    <script>
+        // Initialize with default case studies if none exist
+        if (caseStudiesAPI.getAllCaseStudies().length === 0) {
+            const defaultCaseStudies = [
+                {
+                    id: "tony",
+                    name: "Tony Rodriguez",
+                    sport: "Powerlifting",
+                    goal: "Strength",
+                    duration: "6 months",
+                    image: "tony-case.jpg",
+                    results: { squat: "+50lbs", bench: "+30lbs", deadlift: "+75lbs" },
+                    highlight: "Added 155lbs to total in 6 months",
+                    tags: ["powerlifting", "strength"],
+                    date: "2024-12-01",
+                    description: "Tony transformed his powerlifting performance through focused strength training.",
+                    beforeAfter: { before: "Initial total: 800lbs", after: "Final total: 955lbs" }
+                },
+                {
+                    id: "sarah",
+                    name: "Sarah Chen",
+                    sport: "Powerlifting",
+                    goal: "Strength",
+                    duration: "8 months",
+                    image: "sarah-case.jpg",
+                    results: { squat: "+60lbs", bench: "+35lbs", deadlift: "+80lbs" },
+                    highlight: "Recovered from injury and improved performance",
+                    tags: ["powerlifting", "strength", "injuries"],
+                    date: "2024-11-15",
+                    description: "Sarah overcame injury setbacks while achieving significant strength gains.",
+                    beforeAfter: { before: "Injured and weak", after: "Strong and recovered" }
+                },
+                {
+                    id: "mike",
+                    name: "Mike Johnson",
+                    sport: "Powerlifting",
+                    goal: "Strength",
+                    duration: "12 months",
+                    image: "mike-case.jpg",
+                    results: { squat: "+100lbs", bench: "+50lbs", deadlift: "+120lbs" },
+                    highlight: "Added 270lbs to total in 12 months",
+                    tags: ["powerlifting", "strength"],
+                    date: "2024-10-20",
+                    description: "Mike achieved remarkable strength gains through systematic training.",
+                    beforeAfter: { before: "Total: 800lbs", after: "Total: 1070lbs" }
+                }
+            ];
+            defaultCaseStudies.forEach(cs => {
+                try { caseStudiesAPI.addCaseStudy(cs); }
+                catch (e) { console.error('Error adding default case study:', e); }
+            });
+        }
+
+        // Pagination and Display Settings
+        const ITEMS_PER_PAGE = 6;
+        let currentPage = 1;
+        let filteredCases = [];
+        let currentFilter = 'all';
+        let currentSearch = '';
+        let currentSort = 'recent';
+
+        // Case Study Management Functions
+        function addCaseStudy(data) {
+            try {
+                caseStudiesAPI.addCaseStudy(data);
+                updateTotalCount();
+                renderCaseStudies();
+                return true;
+            } catch (e) {
+                console.error('Error adding case study:', e);
+                return false;
+            }
+        }
+        function updateCaseStudy(id, updates) {
+            try {
+                caseStudiesAPI.updateCaseStudy(id, updates);
+                renderCaseStudies();
+                return true;
+            } catch (e) {
+                console.error('Error updating case study:', e);
+                return false;
+            }
+        }
+        function deleteCaseStudy(id) {
+            try {
+                caseStudiesAPI.deleteCaseStudy(id);
+                updateTotalCount();
+                renderCaseStudies();
+                return true;
+            } catch (e) {
+                console.error('Error deleting case study:', e);
+                return false;
+            }
+        }
+
+        // Filter and search functionality
+        function filterAndSortCases() {
+            const filters = {
+                tags: currentFilter === 'all' ? [] : [currentFilter],
+                sortBy: currentSort
+            };
+            filteredCases = caseStudiesAPI.searchCaseStudies(currentSearch, filters);
+        }
+
+        function renderCaseStudies() {
+            const grid = document.getElementById('caseStudiesGrid');
+            const noResults = document.getElementById('noResults');
+            const loadMoreContainer = document.getElementById('loadMoreContainer');
+            const resultsCount = document.getElementById('resultsCount');
+
+            filterAndSortCases();
+
+            if (!filteredCases.length) {
+                grid.innerHTML = '';
+                noResults.classList.remove('hidden');
+                loadMoreContainer.classList.add('hidden');
+                resultsCount.classList.add('hidden');
+                return;
+            }
+            noResults.classList.add('hidden');
+            resultsCount.classList.remove('hidden');
+
+            const endIndex = currentPage * ITEMS_PER_PAGE;
+            const casesToShow = filteredCases.slice(0, endIndex);
+
+            document.getElementById('showingCount').textContent = Math.min(casesToShow.length, filteredCases.length);
+            document.getElementById('totalCount').textContent = filteredCases.length;
+
+            if (endIndex < filteredCases.length) {
+                loadMoreContainer.classList.remove('hidden');
+            } else {
+                loadMoreContainer.classList.add('hidden');
+            }
+
+            grid.innerHTML = casesToShow.map((cs, i) => `
+                <div class="case-card rounded-lg overflow-hidden hover-animate fade-in flex flex-col h-full w-full" style="background-color:#fff; animation-delay:${i * 0.1}s;">
+                    <div class="relative h-40 sm:h-48 flex-shrink-0" style="background-color:#F2F2F2;">
+                        <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-3 sm:p-4">
+                            <div class="text-3xl sm:text-4xl font-bold" style="color:#6C120D;">${cs.name}</div>
+                            <div class="text-xs sm:text-sm font-semibold mt-2" style="color:#666;">${cs.sport}</div>
+                        </div>
+                    </div>
+                    <div class="p-4 sm:p-6 flex flex-col flex-grow">
+                        <div class="font-bold text-lg sm:text-xl mb-3" style="color:#6C120D;">${cs.highlight}</div>
+                        <div class="text-xs sm:text-sm text-gray-600 mb-4 font-semibold">${cs.duration} • ${cs.goal}</div>
+                        <div class="space-y-1 sm:space-y-2 mb-4 sm:mb-6 flex-grow">
+                            ${Object.entries(cs.results).map(([k, v]) =>
+                                `<div class="text-xs sm:text-sm">
+                                    <span class="font-semibold text-gray-700">${k.charAt(0).toUpperCase() + k.slice(1)}:</span>
+                                    <span class="font-bold text-[#6C120D]">${v}</span>
+                                </div>`
+                            ).join('')}
+                        </div>
+                        <a href="${cs.id}-case.html" class="block w-full text-white text-center py-2 sm:py-3 rounded-md font-bold transition-colors text-sm sm:text-base mt-auto hover:bg-[#8B1C13]" style="background-color:#6C120D;">
+                            Read Full Story
+                        </a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function loadMoreCaseStudies() {
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            const loadingSpinner = document.getElementById('loadingSpinner');
+            loadMoreBtn.classList.add('hidden');
+            loadingSpinner.classList.remove('hidden');
+            setTimeout(() => {
+                currentPage++;
+                renderCaseStudies();
+                loadMoreBtn.classList.remove('hidden');
+                loadingSpinner.classList.add('hidden');
+            }, 1000);
+        }
+
+        function updateTotalCount() {
+            const totalAthletes = document.getElementById('totalAthletes');
+            const stats = caseStudiesAPI.getStatistics();
+            totalAthletes.textContent = `${stats.total}+`;
+        }
+
+        // Event listeners
+        document.getElementById('searchInput').addEventListener('input', e => {
+            currentSearch = e.target.value;
+            currentPage = 1;
+            renderCaseStudies();
+        });
+        document.getElementById('sortSelect').addEventListener('change', e => {
+            currentSort = e.target.value;
+            currentPage = 1;
+            renderCaseStudies();
+        });
+        document.getElementById('loadMoreBtn').addEventListener('click', loadMoreCaseStudies);
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', e => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                currentFilter = e.target.dataset.filter;
+                currentPage = 1;
+                renderCaseStudies();
+            });
+        });
+
+        // AI Agent Integration Functions (for external use)
+        window.caseStudyManager = {
+            addCaseStudy,
+            updateCaseStudy,
+            deleteCaseStudy,
+            getCaseStudies: () => [...caseStudiesDatabase],
+            getCaseStudy: id => caseStudiesDatabase.find(cs => cs.id === id),
+            getFilteredCases: () => [...filteredCases],
+            refreshDisplay: renderCaseStudies
+        };
+
+        // Initial render
+        updateTotalCount();
+        renderCaseStudies();
+    </script>
+</body>
+</html>
