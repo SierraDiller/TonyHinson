@@ -15,44 +15,55 @@
             background: #000 !important;
         }
 
+        .hover-animate {
+            transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+        }
+
         .hover-animate:hover {
-            transform: scale(1.05);
-            background-color: #fff;
-            transition: transform 0.2s, background-color 0.2s;
+            transform: scale(1.03);
+            background-color: #f7f7f7;
+            box-shadow: 0 8px 32px 0 rgba(169, 68, 66, 0.10);
         }
 
         .case-card {
-            transition: all 0.3s;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: box-shadow 0.3s, transform 0.3s;
+            box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.07);
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .case-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.08);
+            transform: translateY(-6px) scale(1.01);
+            box-shadow: 0 12px 32px 0 rgba(169, 68, 66, 0.13);
         }
 
         .filter-btn {
-            border: 1px solid #A94442 !important;
+            border: 1.5px solid #A94442 !important;
             color: #A94442 !important;
             background-color: #fff !important;
             outline: none;
             cursor: pointer;
-            transition: background-color 0.2s, color 0.2s;
+            transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+            font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
         }
 
         .filter-btn.active {
             background-color: #6c120d !important;
             color: #fff !important;
+            border-color: #6c120d !important;
         }
 
         .filter-btn:not(.active):hover {
             background-color: #A94442 !important;
             color: #fff !important;
+            border-color: #A94442 !important;
         }
 
         .search-highlight {
             background-color: #A94442;
-            color: #000;
+            color: #fff;
             padding: 2px 4px;
             border-radius: 2px;
         }
@@ -91,41 +102,54 @@
                 transform: translateY(0);
             }
         }
+
+        /* Responsive tweaks for professional, athletic, engaging look */
+        @media (max-width: 640px) {
+            .case-card {
+                min-width: 0;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .case-card {
+                min-width: 0;
+            }
+        }
     </style>
 </head>
 
 <body class="font-sans bg-white text-black" style="background: #fff !important;">
     <!-- Header/Navbar -->
-    <header class="sticky top-0 z-50 bg-white flex items-center justify-between px-4 py-2 border-b"
-        style="border-color: #000;">
-        <div class="flex items-center w-full">
+    <header class="sticky top-0 z-50 shadow-md rounded-b-xl" style="background-color: #F3F4F6;">
+        <div class="max-w-6xl mx-auto flex items-center gap-4 px-4 sm:px-8 py-3">
+            <!-- Back Button -->
             <a href="https://tony-hinson.vercel.app/"
-                class="flex items-center text-black hover:text-black transition-colors mr-2"
+                class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-[#6C120D] transition"
                 aria-label="Back to Lift A Ton Strength">
-                <span class="text-lg font-extrabold"
-                    style="line-height:1; font-family: 'Inter', 'Segoe UI', 'Arial', sans-serif;">&lt;</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#6C120D]" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M7.707 4.293a1 1 0 010 1.414L4.414 9H16a1 1 0 110 2H4.414l3.293 3.293a1 1 0 11-1.414 1.414l-5-5a1 1 0 010-1.414l5-5a1 1 0 111.414 1.414z" clip-rule="evenodd" />
+                </svg>
             </a>
-            <div class="flex-1 flex justify-center">
-                <span class="font-bold text-gray-600 text-base whitespace-nowrap truncate"
-                    style="max-width: 60vw; font-family: 'Inter', 'Segoe UI', 'Arial', sans-serif;">
-                    Lift A Ton Strength
-                </span>
-            </div>
-            <div style="width:1.5rem;"></div>
+            <!-- Title -->
+            <h1 class="flex-1 text-center text-lg sm:text-xl font-bold tracking-wide text-[#6C120D]" style="font-family: 'Inter', 'Segoe UI', 'Arial', sans-serif; letter-spacing:0.01em;">
+                Lift A Ton Strength
+            </h1>
+            <!-- Spacer for alignment -->
+            <span class="w-10"></span>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="bg-black py-20 px-6 pb-8">
+    <!-- Hero Section (DO NOT CHANGE) -->
+    <section class="bg-black py-20 px-6 pb-5">
         <div class="max-w-6xl mx-auto text-center">
             <h1
-                class="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-red-900 to-white bg-clip-text text-transparent">
+                class="text-5xl md:text-7xl font-bold mb-6 text-white">
                 Real Results from Real Athletes
             </h1>
             <p class="text-xl"
-                style="color:#fff; margin-bottom:2rem; max-width:48rem; margin-left:auto; margin-right:auto;">
-                Discover how dedicated athletes transformed their strength, physique, and performance through proven
-                training methods.
+                style="color:#b8b8b8; margin-bottom:2rem; max-width:48rem; margin-left:auto; margin-right:auto;">
+                <em>Discover how dedicated athletes transformed their strength, physique, and performance through proven
+                training methods.</em>
             </p>
             <div class="flex flex-wrap justify-center gap-4 text-sm">
                 <div class="px-4 py-2 rounded-full" style="background-color:#fff; color:#000;">
@@ -143,92 +167,98 @@
             </div>
         </div>
     </section>
-
-    <!-- Author Credit -->
-    <section class="bg-black pt-0 pb-6">
-        <div class="max-w-6xl mx-auto">
-            <div class="flex justify-center">
-                <p class="italic text-white text-2xl md:text-3xl font-bold text-center">By Tony Hinson</p>
-            </div>
+   
+   
+    <section class="bg-black pt-16 px-4 sm:px-6 pb-1 mt-0">
+        <div class="max-w-6xl mx-auto text-left">
+            <p class="text-sm sm:text-base text-gray-400 mb-1 font-medium">
+                Browse case studies by keyword or filter.
+            </p>
         </div>
     </section>
 
+
+
+
     <!-- Search and Filter Section -->
-    <section class="bg-black py-6 sm:py-8 px-4 sm:px-6">
+    <section class="bg-black py-2 px-4 sm:px-6">
         <div class="max-w-6xl mx-auto">
-            <div class="mb-4 sm:mb-6">
-                <input type="text" id="searchInput" placeholder="Search athletes or results..."
-                    class="w-full px-3 sm:px-4 py-2 sm:py-3 text-sm sm:text-base"
-                    style="background-color:#fff; border:1px solid #A94442; color:#000; border-radius:0.5rem;">
+            <div class="mb-6">
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search athletes or results..."
+                    class="w-full px-5 py-3 text-base rounded-xl border border-gray-200 shadow-sm focus:ring-2 focus:ring-[#A94442] focus:border-[#A94442] focus:outline-none transition duration-200 bg-white text-black placeholder-gray-400"
+                    style="box-shadow: 0 2px 12px 0 rgba(169, 68, 66, 0.07);"
+                >
             </div>
-            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-3 sm:gap-4 mb-4 sm:mb-6">
-                <div class="flex flex-wrap gap-2 sm:gap-3">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+                <div class="flex flex-wrap gap-3 w-full md:w-auto justify-center md:justify-start">
                     <button
-                        class="filter-btn active px-3 sm:px-4 py-2 rounded-lg font-bold transition-colors text-sm sm:text-base"
-                        data-filter="all">
+                        class="filter-btn active min-w-[120px] px-5 py-2.5 rounded-xl font-bold text-base transition-all duration-150 bg-white text-[#A94442] border border-gray-200 shadow-sm hover:bg-[#A94442] hover:text-white focus:bg-[#A94442] focus:text-white active:bg-[#8B3634] active:text-white"
+                        data-filter="all"
+                        style="border: none;"
+                    >
                         All Cases
                     </button>
                     <button
-                        class="filter-btn px-3 sm:px-4 py-2 rounded-lg font-bold transition-colors text-sm sm:text-base"
-                        data-filter="strength">
+                        class="filter-btn min-w-[120px] px-5 py-2.5 rounded-xl font-bold text-base transition-all duration-150 bg-white text-[#A94442] border border-gray-200 shadow-sm hover:bg-[#A94442] hover:text-white focus:bg-[#A94442] focus:text-white active:bg-[#8B3634] active:text-white"
+                        data-filter="strength"
+                        style="border: none;"
+                    >
                         Strength
                     </button>
                     <button
-                        class="filter-btn px-3 sm:px-4 py-2 rounded-lg font-bold transition-colors text-sm sm:text-base"
-                        data-filter="injuries">
+                        class="filter-btn min-w-[120px] px-5 py-2.5 rounded-xl font-bold text-base transition-all duration-150 bg-white text-[#A94442] border border-gray-200 shadow-sm hover:bg-[#A94442] hover:text-white focus:bg-[#A94442] focus:text-white active:bg-[#8B3634] active:text-white"
+                        data-filter="injuries"
+                        style="border: none;"
+                    >
                         Injuries
                     </button>
-                </div>
-                <div class="flex items-center gap-2 sm:gap-4">
-                    <span class="text-sm sm:text-base" style="color:#fff;">Sort by:</span>
-                    <select id="sortSelect" class="px-2 sm:px-3 py-2 rounded-lg text-black text-sm sm:text-base"
-                        style="background-color:#fff; border:1px solid #fff;">
-                        <option value="recent">Most Recent</option>
-                        <option value="impressive">Most Impressive</option>
-                        <option value="name">Name A-Z</option>
-                    </select>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Case Studies Grid -->
-    <section class="py-12 px-6" style="background: #000;">
+    <section class="py-5 px-2 sm:px-6" style="background: #000;">
         <div class="max-w-6xl mx-auto">
-            <div id="caseStudiesGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 items-stretch">
+            <div id="caseStudiesGrid"
+                class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 items-stretch">
             </div>
             <div id="noResults" class="hidden text-center py-12">
-                <div class="text-[#fff] text-xl mb-4">No case studies found</div>
-                <p class="text-[#fff]">Try adjusting your search or filters</p>
+                <div class="text-white text-xl font-semibold mb-4">No case studies found</div>
+                <p class="text-white">Try adjusting your search or filters</p>
             </div>
             <div id="loadMoreContainer" class="text-center mt-12 hidden">
                 <button id="loadMoreBtn"
-                    class="bg-[#A94442] text-white px-8 py-4 rounded-lg font-bold transition-colors hover:bg-[#8B3634]">
+                    class="bg-[#A94442] text-white px-8 py-4 rounded-lg font-bold transition-colors hover:bg-[#8B3634] shadow-md">
                     Load More Case Studies
                 </button>
                 <div id="loadingSpinner" class="hidden mt-4">
                     <div class="loading-spinner mx-auto"></div>
-                    <p class="text-[#fff] mt-2">Loading more case studies...</p>
+                    <p class="text-white mt-2">Loading more case studies...</p>
                 </div>
             </div>
-            <div id="resultsCount" class="text-center mt-8 text-[#fff]">
+            <div id="resultsCount" class="text-center mt-8 text-white text-base font-medium">
                 Showing <span id="showingCount">0</span> of <span id="totalCount">0</span> case studies
             </div>
-        </div>
-    </section>
+            <div class="w-full" style="height:32px; background:#000;"></div>
 
     <!-- Call to Action -->
-    <section class="py-16 px-6" style="background: linear-gradient(to right, #6c120d, #6c120d);">
+    <section class="w-full py-10 px-2 sm:px-6" style="background: linear-gradient(to right, #6c120d, #6c120d); margin-left:0; margin-right:0;">
         <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-4xl font-bold text-white mb-6">Ready for Your Transformation?</h2>
+            <h2 class="text-4xl font-bold text-white mb-6 tracking-tight">Ready for Your Transformation?</h2>
             <p class="text-xl text-white mb-8">Join the ranks of successful athletes who've achieved their goals with
                 proven training methods.</p>
             <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="contact.html" class="bg-black text-white px-8 py-4 rounded-lg font-bold transition-colors"
+                <a href="contact.html"
+                    class="bg-black text-white px-8 py-4 rounded-lg font-bold transition-colors hover:bg-[#222] shadow"
                     style="background-color:#000;">
                     Start Your Journey
                 </a>
-                <a href="programs.html" class="bg-white text-black px-8 py-4 rounded-lg font-bold transition-colors"
+                <a href="programs.html"
+                    class="bg-white text-black px-8 py-4 rounded-lg font-bold transition-colors hover:bg-gray-100 shadow"
                     style="background-color:#fff;">
                     View Programs
                 </a>
@@ -238,8 +268,8 @@
 
     <!-- Footer -->
     <footer class="bg-black py-6">
-        <div class="max-w-6xl mx-auto px-6 text-center">
-            <p class="text-[#fff]">© 2025 Lift A Ton Strength. Built with strength and strategy.</p>
+        <div class="max-w-6xl mx-auto px-2 sm:px-6 text-center">
+            <p class="text-white text-sm sm:text-base">© 2025 Lift A Ton Strength. Built with strength and strategy.</p>
         </div>
     </footer>
 
@@ -304,7 +334,7 @@
         let filteredCases = [];
         let currentFilter = 'all';
         let currentSearch = '';
-        let currentSort = 'recent';
+        let currentSort = 'recent'; // Always most recent
 
         // Case Study Management Functions
         function addCaseStudy(data) {
@@ -344,7 +374,7 @@
         function filterAndSortCases() {
             const filters = {
                 tags: currentFilter === 'all' ? [] : [currentFilter],
-                sortBy: currentSort
+                sortBy: 'recent' // Always sort by most recent
             };
             filteredCases = caseStudiesAPI.searchCaseStudies(currentSearch, filters);
         }
@@ -386,25 +416,29 @@
                     storyLink = "rodriguez-case.html";
                 }
                 return `
-                <div class="case-card rounded-lg overflow-hidden hover-animate fade-in flex flex-col h-full w-full" style="background-color:#fff; animation-delay:${i * 0.1}s;">
-                    <div class="relative h-40 sm:h-48 flex-shrink-0" style="background-color:#F2F2F2;">
-                        <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-3 sm:p-4">
-                            <div class="text-3xl sm:text-4xl font-bold" style="color:#6C120D;">${cs.name}</div>
-                            <div class="text-xs sm:text-sm font-semibold mt-2" style="color:#666;">${cs.sport}</div>
+                <div class="case-card hover-animate fade-in rounded-2xl overflow-hidden shadow-lg flex flex-col h-full w-full" style="animation-delay:${i * 0.1}s;">
+                    <div class="relative h-40 sm:h-48 flex-shrink-0" style="background-color: #f3f1ed;">
+                        <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-4">
+                            <div class="text-2xl sm:text-3xl font-extrabold uppercase tracking-wide" style="color:#6C120D;">${cs.name}</div>
+                            <div class="text-xs sm:text-sm font-semibold mt-2 text-gray-500">${cs.sport}</div>
                         </div>
                     </div>
-                    <div class="p-4 sm:p-6 flex flex-col flex-grow">
-                        <div class="font-bold text-lg sm:text-xl mb-3" style="color:#6C120D;">${cs.highlight}</div>
-                        <div class="text-xs sm:text-sm text-gray-600 mb-4 font-semibold">${cs.duration} • ${cs.goal}</div>
+                    <div class="p-5 sm:p-6 flex flex-col flex-grow">
+                        <div class="font-bold text-lg sm:text-xl mb-2 sm:mb-3 text-[#6C120D]">${cs.highlight}</div>
+                        <div class="text-xs sm:text-sm text-gray-600 mb-3 font-semibold">${cs.duration} • ${cs.goal}</div>
                         <div class="space-y-1 sm:space-y-2 mb-4 sm:mb-6 flex-grow">
                             ${Object.entries(cs.results).map(([k, v]) =>
-                    `<div class="text-xs sm:text-sm">
-                                    <span class="font-semibold text-gray-700">${k.charAt(0).toUpperCase() + k.slice(1)}:</span>
-                                    <span class="font-bold text-[#6C120D]">${v}</span>
-                                </div>`
+                    `<div class="text-xs sm:text-sm flex items-center gap-1">
+                        <span class="font-semibold text-gray-700">${k.charAt(0).toUpperCase() + k.slice(1)}:</span>
+                        <span class="font-bold text-[#6C120D]">${v}</span>
+                    </div>`
                 ).join('')}
                         </div>
-                        <a href="${storyLink}" class="block w-full text-white text-center py-2 sm:py-3 rounded-md font-bold transition-colors text-sm sm:text-base mt-auto hover:bg-[#8B1C13]" style="background-color:#6C120D;">
+                        <a href="${storyLink}" 
+                           class="block w-full text-white text-center py-2 sm:py-3 rounded-md font-bold transition-colors text-sm sm:text-base mt-auto"
+                           style="letter-spacing:0.01em; background-color:#6C120D;"
+                           onmouseover="this.style.backgroundColor='#8B1C13'; this.style.color='#fff';"
+                           onmouseout="this.style.backgroundColor='#6C120D'; this.style.color='#fff';">
                             Read Full Story
                         </a>
                     </div>
@@ -435,11 +469,6 @@
         // Event listeners
         document.getElementById('searchInput').addEventListener('input', e => {
             currentSearch = e.target.value;
-            currentPage = 1;
-            renderCaseStudies();
-        });
-        document.getElementById('sortSelect').addEventListener('change', e => {
-            currentSort = e.target.value;
             currentPage = 1;
             renderCaseStudies();
         });
