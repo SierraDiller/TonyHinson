@@ -50,9 +50,7 @@
         #testimonials .testimonials-scroll {
             display: flex;
             gap: 1.5rem;
-            /* Removed overflow-x: auto and scroll bar related properties */
             padding: 1rem 1rem 2rem 1rem;
-            /* Add padding to ensure first and last cards can be centered */
             padding-left: calc(50vw - 210px);
             padding-right: calc(50vw - 210px);
         }
@@ -70,7 +68,6 @@
             box-sizing: border-box;
             margin: 0 auto;
             transition: box-shadow 0.3s cubic-bezier(.4, 0, .2, 1), transform 0.3s cubic-bezier(.4, 0, .2, 1);
-            /* Ensure proper centering on mobile */
             scroll-snap-stop: always;
         }
 
@@ -79,14 +76,12 @@
             transform: translateY(-4px) scale(1.025);
         }
 
-        /* Active card styling */
         #testimonials .testimonial-card.active {
             transform: scale(1.05);
             box-shadow: 0 12px 40px rgba(169, 68, 66, 0.25), 0 4px 12px rgba(0, 0, 0, 0.12);
             z-index: 5;
         }
 
-        /* --- MOBILE: Make testimonial cards smaller than screen width --- */
         @media (max-width: 630px) {
             #testimonials .testimonial-card {
                 width: 85vw;
@@ -146,22 +141,17 @@
             }
         }
 
-        /* Custom testimonial scrollbar styles */
         #testimonials .testimonials-scroll {
             scroll-snap-type: x mandatory;
             overflow-x: auto;
             scrollbar-width: none;
-            /* Firefox */
             -ms-overflow-style: none;
-            /* IE and Edge */
         }
 
         #testimonials .testimonials-scroll::-webkit-scrollbar {
             display: none;
-            /* Chrome, Safari, Opera */
         }
 
-        /* Custom scroll indicators */
         .scroll-indicators {
             display: flex;
             justify-content: center;
@@ -200,32 +190,26 @@
             }
         }
 
-        /* Mobile header font size adjustments */
         @media (max-width: 768px) {
             header .font-bold {
                 font-size: 0.75rem;
-                /* 12px */
             }
 
             header nav a {
                 font-size: 0.6875rem;
-                /* 11px */
             }
         }
 
         @media (max-width: 480px) {
             header .font-bold {
                 font-size: 0.6875rem;
-                /* 11px */
             }
 
             header nav a {
                 font-size: 0.625rem;
-                /* 10px */
             }
         }
 
-        /* Hide nav on mobile, show hamburger */
         @media (max-width: 640px) {
             header nav {
                 display: none !important;
@@ -242,7 +226,6 @@
             }
         }
 
-        /* Mobile menu dropdown styles */
         .mobile-menu {
             display: none;
             position: absolute;
@@ -271,19 +254,85 @@
         .mobile-menu a:last-child {
             border-bottom: none;
         }
+
+        /* --- GALLERY SECTION STYLES --- */
+        #gallery .gallery-scroll {
+            display: flex;
+            gap: 1.5rem;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding: 1rem 0 2rem 0;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        #gallery .gallery-scroll::-webkit-scrollbar {
+            display: none;
+        }
+        #gallery .gallery-card {
+            flex: 0 0 auto;
+            scroll-snap-align: center;
+            background: #111;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+            border-radius: 0.75rem;
+            width: 95vw;
+            max-width: 260px;
+            min-width: 180px;
+            height: 320px;
+            box-sizing: border-box;
+            margin: 0 auto;
+            border: 1px solid #444;
+            transition: box-shadow 0.3s cubic-bezier(.4,0,.2,1), transform 0.3s cubic-bezier(.4,0,.2,1);
+            scroll-snap-stop: always;
+            overflow: hidden;
+        }
+        #gallery .gallery-card.active {
+            transform: scale(1.05);
+            box-shadow: 0 12px 40px rgba(169,68,66,0.25), 0 4px 12px rgba(0,0,0,0.12);
+            z-index: 5;
+        }
+        #gallery .gallery-card img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+            border-radius: 0.75rem;
+        }
+        @media (max-width: 630px) {
+            #gallery .gallery-card {
+                max-width: 200px;
+                min-width: 120px;
+                height: 220px;
+            }
+        }
+        @media (max-width: 480px) {
+            #gallery .gallery-card {
+                max-width: 160px;
+                min-width: 100px;
+                height: 180px;
+            }
+        }
+        @media (min-width: 640px) {
+            #gallery .gallery-card {
+                max-width: 260px;
+                min-width: 180px;
+                height: 320px;
+            }
+        }
     </style>
 </head>
 
 <body class="font-sans bg-white text-gray-900">
     <header class="sticky top-0 z-50 bg-white flex justify-between items-center px-6 py-4 relative">
+        <!-- Left: Site Name -->
         <div class="font-bold text-gray-600 text-xl whitespace-nowrap truncate" style="max-width: 60vw;">
             Lift A Ton Strength
         </div>
+
+        <!-- Right: Navigation -->
         <nav class="flex space-x-4">
             <a href="#about" class="text-gray-400 text-base">About</a>
+            <a href="TonyCaseLocal.html" class="text-gray-400 text-base">Case Study</a>
             <a href="#pricing" class="text-gray-400 text-base">Prices</a>
             <a href="#contact-form" class="text-gray-400 text-base">Contact</a>
-            <a href="TonyCaseLocal.html" class="text-gray-400 text-base">Case Study</a>
         </nav>
         <!-- Hamburger button for mobile -->
         <button
@@ -333,8 +382,8 @@
         </script>
     </header>
 
-    <div class="flex justify-center items-center w-full bg-black pt-6 pb-2">
-        <img src="TONY HINSON.png" alt="Tony Hinson" class="max-w-full h-auto shadow-lg" />
+    <div class="flex flex-col justify-center items-center w-full bg-black pt-6 pb-2">
+        <img src="TONY HINSON (3).png" alt="Tony Hinson" class="max-w-full h-auto shadow-lg" style="margin-top:0;" />
     </div>
     <!-- Removed video from here -->
 
@@ -366,12 +415,34 @@
                 </video>
             </div>
         </div>
-        <div class="w-full h-6 bg-gradient-to-b from-black to-[#111]"></div>
     </section>
-
+<section class="bg-black py-12 px-4 sm:py-16 sm:px-6 lg:py-20">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="flex items-center justify-center mb-6 w-full">
+            <span class="h-px flex-grow mr-4" style="background-color: #A94442;"></span>
+            <h2
+                class="text-3xl md:text-4xl font-bold tracking-wide uppercase text-center text-white whitespace-nowrap mx-6 flex-shrink-0">
+                CASE STUDIES BY TONY
+            </h2>
+            <span class="h-px flex-grow ml-4" style="background-color: #A94442;"></span>
+        </div>
+        <p class="text-base sm:text-lg text-gray-400 mb-8 sm:mb-10 px-0 sm:px-8">
+            Explore detailed case studies of lifters who have achieved remarkable results with Lift A Ton Strength.
+            Discover their journeys, challenges, and the strategies that led to their success.
+        </p>
+        <div class="flex justify-center">
+            <a href="TonyCaseLocal.html"
+                class="bg-[#A94442] text-white font-semibold py-4 px-10 rounded-lg w-full sm:w-auto border-2 border-gray-200 text-base sm:text-lg lg:text-xl focus:outline-none text-center flex justify-center items-center"
+                style="background-color: #A94442; max-width: 360px; box-shadow: none;"
+                onmouseover="this.style.backgroundColor='#55010F';" onmouseout="this.style.backgroundColor='#A94442';"
+                tabindex="0">
+                <span class="w-full text-center flex justify-center items-center"> Case Studies </span>
+            </a>
+        </div>
+    </div>
+</section>
     <section class="w-full py-5 bg-black">
         <style>
-            /* Tablet (md) styles for larger cards and text in this section only */
             @media (min-width: 640px) and (max-width: 1023px) {
                 .sneak-peek-card {
                     max-width: 480px !important;
@@ -380,17 +451,14 @@
 
                 .sneak-peek-card img {
                     height: 22rem !important;
-                    /* 352px */
                 }
 
                 .sneak-peek-card h3 {
                     font-size: 1.5rem !important;
-                    /* 24px */
                 }
 
                 .sneak-peek-card p {
                     font-size: 1.125rem !important;
-                    /* 18px */
                 }
 
                 .sneak-peek-card .card-content {
@@ -401,12 +469,12 @@
         </style>
         <div class="max-w-6xl mx-auto px-6">
             <div class="flex items-center justify-center mb-6 w-full">
-                <span class="h-px flex-grow" style="background-color: #A94442;"></span>
+                <span class="h-px flex-grow mr-4" style="background-color: #A94442;"></span>
                 <h2
                     class="text-3xl md:text-4xl font-bold tracking-wide uppercase text-center text-white whitespace-nowrap mx-6 flex-shrink-0">
                     A SNEAK PEEK
                 </h2>
-                <span class="h-px flex-grow" style="background-color: #A94442;"></span>
+                <span class="h-px flex-grow ml-4" style="background-color: #A94442;"></span>
             </div>
             <div
                 class="flex flex-col lg:flex-row lg:justify-center lg:items-center items-center justify-center gap-6 lg:gap-10 text-center">
@@ -462,12 +530,12 @@
     <section id="testimonials" class="w-full pt-5 pb-8 bg-black">
         <div class="max-w-6xl mx-auto px-6">
             <div class="flex items-center justify-center md:justify-end mb-6 w-full">
-                <span class="h-px w-8" style="background-color: #A94442;"></span>
-                <h2 class="text-3xl font-bold italic tracking-wide uppercase text-left whitespace-nowrap mx-4 flex-shrink-0"
+                <span class="h-px flex-grow mr-4" style="background-color: #A94442;"></span>
+                <h2 class="text-3xl font-bold italic tracking-wide uppercase whitespace-nowrap"
                     style="color: #FFFFFF;">
-                    TESTIMONIALS
+                    TESTIMONIALS 
                 </h2>
-                <span class="h-px flex-grow" style="background-color: #A94442;"></span>
+                <span class="h-px flex-grow ml-4" style="background-color: #A94442;"></span>
             </div>
 
             <div class="testimonials-scroll">
@@ -564,20 +632,59 @@
                 <div class="scroll-indicator" data-index="4"></div>
             </div>
         </div>
+    </section>
 
+    <!-- Gallery Section -->
+    <section id="gallery" class="w-full pt-5 pb-8 bg-black">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex items-center justify-center md:justify-end mb-6 w-full">
+                <span class="h-px flex-grow mr-4" style="background-color: #A94442;"></span>
+                <h2 class="text-3xl font-bold italic tracking-wide uppercase whitespace-nowrap"
+                    style="color: #FFFFFF;">
+                    Gallery
+                </h2>
+                <span class="h-px flex-grow ml-4" style="background-color: #A94442;"></span>
+            </div>
 
+            <div class="gallery-scroll">
+                <!-- Gallery Image 1 -->
+                <div class="gallery-card">
+                    <img src="julia.png" alt="Gallery Julia" />
+                </div>
+                <!-- Gallery Image 2 -->
+                <div class="gallery-card">
+                    <img src="boy1.png" alt="Gallery Boy 1" />
+                </div>
+                <!-- Gallery Image 3 -->
+                <div class="gallery-card">
+                    <img src="boy2.jpg" alt="Gallery Boy 2" />
+                </div>
+                <!-- Gallery Image 4 -->
+                <div class="gallery-card">
+                    <img src="girl2.png" alt="Gallery Girl 2" />
+                </div>
+            </div>
+
+            <!-- Gallery Scroll Indicators -->
+            <div class="scroll-indicators mt-4 flex justify-center gap-2">
+                <div class="scroll-indicator active" data-index="0"></div>
+                <div class="scroll-indicator" data-index="1"></div>
+                <div class="scroll-indicator" data-index="2"></div>
+                <div class="scroll-indicator" data-index="3"></div>
+            </div>
+        </div>
     </section>
 
     <!-- Pricing & Programs Section -->
     <section id="pricing" class="pt-16 pb-20 px-6 bg-black scroll-mt-16">
         <div class="max-w-6xl mx-auto px-6">
             <div class="flex items-center justify-center mb-10 w-full">
-                <span class="h-px flex-grow" style="background-color: #A94442;"></span>
+                <span class="h-px flex-grow mr-4" style="background-color: #A94442;"></span>
                 <h2
                     class="text-3xl font-bold tracking-wide uppercase text-center text-white whitespace-nowrap mx-6 flex-shrink-0">
                     Pricing
                 </h2>
-                <span class="h-px flex-grow" style="background-color: #A94442;"></span>
+                <span class="h-px flex-grow ml-4" style="background-color: #A94442;"></span>
             </div>
 
             <div class="flex flex-col md:flex-row md:space-x-6 items-center justify-center">
@@ -640,12 +747,12 @@
             <div class="max-w-6xl mx-auto px-6">
             <div class="max-w-6xl mx-auto px-6">
                 <div class="flex items-center justify-center mb-6 w-full">
-                    <span class="h-px flex-grow" style="background-color: #A94442;"></span>
+                <span class="h-px flex-grow mr-4" style="background-color: #A94442;"></span>
                     <h2
                         class="text-3xl md:text-4xl font-bold tracking-wide uppercase text-center text-white whitespace-nowrap mx-6 flex-shrink-0">
                         CONTACT US
                     </h2>
-                    <span class="h-px flex-grow" style="background-color: #A94442;"></span>
+                <span class="h-px flex-grow ml-4" style="background-color: #A94442;"></span>
                 </div>
             </div>
         </section>
@@ -672,34 +779,7 @@
         </form>
     </section>
 
-    <section class="bg-black py-12 px-4 sm:py-16 sm:px-6 lg:py-20">
-    <div class="max-w-6xl mx-auto px-6">
-        <div class="flex items-center justify-center mb-6 w-full">
-            <span class="h-px flex-grow" style="background-color: #A94442;"></span>
-            <h2
-                class="text-3xl md:text-4xl font-bold tracking-wide uppercase text-center text-white whitespace-nowrap mx-6 flex-shrink-0">
-                CASE STUDIES BY TONY
-            </h2>
-            <span class="h-px flex-grow" style="background-color: #A94442;"></span>
-        </div>
-            <p class="text-base sm:text-lg text-gray-400 mb-8 sm:mb-10 px-0 sm:px-8">
-                Explore detailed case studies of lifters who have achieved remarkable results with Lift A Ton Strength. Discover their journeys, challenges, and the strategies that led to their success.
-            </p>
-            <div class="flex justify-center">
-                <a href="TonyCaseLocal.html"
-                    class="bg-[#A94442] text-white font-semibold py-4 px-10 rounded-lg w-full sm:w-auto border-2 border-gray-200 text-base sm:text-lg lg:text-xl focus:outline-none text-center flex justify-center items-center"
-                    style="background-color: #A94442; max-width: 360px; box-shadow: none;"
-                    onmouseover="this.style.backgroundColor='#55010F';"
-                    onmouseout="this.style.backgroundColor='#A94442';"
-                    tabindex="0"
-                >
-                    <span class="w-full text-center flex justify-center items-center"> Case Studies </span>
-                </a>
-            </div>
-        </div>
-        <!-- Add bottom black padding below the section -->
-        <div class="w-full bg-black" style="height: 50px;"></div>
-    </section>
+    
 
     <footer class="bg-gray-100 py-6">
         <div class="max-w-6xl mx-auto px-6 text-center">
@@ -718,15 +798,14 @@
         // Testimonials scroll functionality
         document.addEventListener('DOMContentLoaded', function () {
             const testimonialsScroll = document.querySelector('.testimonials-scroll');
-            const scrollIndicators = document.querySelectorAll('.scroll-indicator');
+            const scrollIndicators = document.querySelectorAll('#testimonials .scroll-indicator');
             const testimonialCards = document.querySelectorAll('.testimonial-card');
 
             if (!testimonialsScroll || scrollIndicators.length === 0) return;
 
-            // Function to update active indicator
             function updateActiveIndicator() {
                 const scrollLeft = testimonialsScroll.scrollLeft;
-                const cardWidth = testimonialCards[0].offsetWidth + 24; // card width + gap
+                const cardWidth = testimonialCards[0].offsetWidth + 24;
                 const currentIndex = Math.round(scrollLeft / cardWidth);
 
                 scrollIndicators.forEach((indicator, index) => {
@@ -737,7 +816,6 @@
                     }
                 });
 
-                // Update active card
                 testimonialCards.forEach((card, index) => {
                     if (index === currentIndex) {
                         card.classList.add('active');
@@ -747,9 +825,8 @@
                 });
             }
 
-            // Function to scroll to specific testimonial
             function scrollToTestimonial(index) {
-                const cardWidth = testimonialCards[0].offsetWidth + 24; // card width + gap
+                const cardWidth = testimonialCards[0].offsetWidth + 24;
                 const scrollPosition = index * cardWidth;
                 testimonialsScroll.scrollTo({
                     left: scrollPosition,
@@ -757,32 +834,85 @@
                 });
             }
 
-            // Add scroll event listener
             testimonialsScroll.addEventListener('scroll', updateActiveIndicator);
 
-            // Add click event listeners to indicators
             scrollIndicators.forEach((indicator, index) => {
                 indicator.addEventListener('click', () => {
                     scrollToTestimonial(index);
                 });
             });
 
-            // Initialize active indicator
             updateActiveIndicator();
 
-            // Center the first card on mobile
             function centerFirstCard() {
                 const cardWidth = testimonialCards[0].offsetWidth;
                 const containerWidth = testimonialsScroll.offsetWidth;
                 const scrollPosition = (cardWidth - containerWidth) / 2;
-
-                // Always center the first card, even if scrollPosition is negative
                 testimonialsScroll.scrollLeft = Math.max(0, scrollPosition);
             }
 
-            // Center first card on load and resize
-            setTimeout(centerFirstCard, 100); // Small delay to ensure DOM is ready
+            setTimeout(centerFirstCard, 100);
             window.addEventListener('resize', centerFirstCard);
+        });
+
+        // Gallery scroll logic (fixed)
+        document.addEventListener('DOMContentLoaded', function () {
+            const galleryScroll = document.querySelector('#gallery .gallery-scroll');
+            const galleryCards = document.querySelectorAll('#gallery .gallery-card');
+            const galleryIndicators = document.querySelectorAll('#gallery .scroll-indicator');
+
+            if (!galleryScroll || galleryCards.length === 0 || galleryIndicators.length === 0) return;
+
+            function updateGalleryActiveIndicator() {
+                const scrollLeft = galleryScroll.scrollLeft;
+                const cardWidth = galleryCards[0].offsetWidth + 24;
+                const currentIndex = Math.round(scrollLeft / cardWidth);
+
+                galleryIndicators.forEach((indicator, index) => {
+                    if (index === currentIndex) {
+                        indicator.classList.add('active');
+                    } else {
+                        indicator.classList.remove('active');
+                    }
+                });
+
+                galleryCards.forEach((card, index) => {
+                    if (index === currentIndex) {
+                        card.classList.add('active');
+                    } else {
+                        card.classList.remove('active');
+                    }
+                });
+            }
+
+            function scrollToGalleryImage(index) {
+                const cardWidth = galleryCards[0].offsetWidth + 24;
+                const scrollPosition = index * cardWidth;
+                galleryScroll.scrollTo({
+                    left: scrollPosition,
+                    behavior: 'smooth'
+                });
+            }
+
+            galleryScroll.addEventListener('scroll', updateGalleryActiveIndicator);
+
+            galleryIndicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    scrollToGalleryImage(index);
+                });
+            });
+
+            updateGalleryActiveIndicator();
+
+            function centerFirstGalleryCard() {
+                const cardWidth = galleryCards[0].offsetWidth;
+                const containerWidth = galleryScroll.offsetWidth;
+                const scrollPosition = (cardWidth - containerWidth) / 2;
+                galleryScroll.scrollLeft = Math.max(0, scrollPosition);
+            }
+
+            setTimeout(centerFirstGalleryCard, 100);
+            window.addEventListener('resize', centerFirstGalleryCard);
         });
     </script>
 </body>
